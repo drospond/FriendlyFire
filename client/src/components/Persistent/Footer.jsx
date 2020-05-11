@@ -1,12 +1,13 @@
 import React from 'react';
+import "./Footer.css"
 
 const Footer = () => {
     return (
         <footer className="page-footer">
         <div className="footer-copyright">
-          <div className="container">
-          © 2014 Copyright Text
-          <a className="grey-text text-lighten-4" href="#!">More Links</a>
+          <div className="container center-align">
+         Made with 🤞 by DDRL Entertainment 
+         ©2020
           </div>
         </div>
       </footer>
