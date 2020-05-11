@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./CA.css";
+import "./Signin.css";
 import { Link } from "react-router-dom";
 
-class CreateAccount extends Component {
+class Signin extends Component {
   render() {
     return (
       <div>
@@ -34,24 +34,10 @@ class CreateAccount extends Component {
             ),
           }}
         />
-        <br/>
-        <h3>Username</h3>
-        <TextField
-          className={classes.margin}
-          id="input-with-icon-textfield"
-          label="TextField"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AccountCircle />
-              </InputAdornment>
-            ),
-          }}
-        />
-
+      
       </div>
     );
   }
 }
 
-export default CreateAccount;
+export default Signin;
