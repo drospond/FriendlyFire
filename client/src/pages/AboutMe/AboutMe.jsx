@@ -6,7 +6,9 @@ class AboutMe extends Component {
   render() {
     return (
       <div>
-        <h2>About Me</h2>
+        About me page works!
+        {/* BELOW IS COMMENTED OUT FOR TESTING */}
+        {/* <h2>About Me</h2>
         <TextField
           className={classes.margin}
           id="input-with-icon-textfield"
@@ -81,9 +83,11 @@ class AboutMe extends Component {
           <MenuItem value={40}>Nintendo</MenuItem>
           <MenuItem value={50}>Mobile</MenuItem>
         </Select>
-        <FormHelperText>What Platforms do you play game on?</FormHelperText>
-      </FormControl>
+        <FormHelperText>What Platforms do you play games on?</FormHelperText>
+      </FormControl> */}
       </div>
     );
   }
 }
+
+export default AboutMe

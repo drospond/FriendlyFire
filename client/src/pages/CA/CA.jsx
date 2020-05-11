@@ -6,7 +6,9 @@ class CreateAccount extends Component {
   render() {
     return (
       <div>
-        <h3>Username</h3>
+        Testing Create account page                
+        {/* BELOW IS COMMENTED OUT FOR TESTING */}
+        {/* <h3>Username</h3>
         <TextField
           className={classes.margin}
           id="input-with-icon-textfield"
@@ -47,7 +49,7 @@ class CreateAccount extends Component {
               </InputAdornment>
             ),
           }}
-        />
+        /> */}
 
       </div>
     );
