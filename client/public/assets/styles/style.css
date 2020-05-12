@@ -1,5 +1,8 @@
-body {
+#root {
     background-color: #0d0c1c;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 #NavFooter{
@@ -9,3 +12,12 @@ body {
 #FFheadText{
     color: #d8dae7;
 }
+
+form {
+color:#d8dae7 ;
+}
+
+main {
+    flex: 1 0 auto;
+  }
+
