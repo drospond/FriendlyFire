@@ -11,8 +11,11 @@ import FindFriend from "./pages/FindFriends/FindFriend"
 import AddGame from './pages/AddGame/AddGame';
 
 function App() {
-  return (
-    <Router>
+  return ( 
+  <Router>
+    <header>
+    </header>
+    <main>
       <div>
       <NavBar/>
     <Switch>
@@ -35,8 +38,11 @@ function App() {
           <AddGame/>
         </Route>
       </Switch>
-    <Footer/>
     </div>
+    </main>
+    <footer>
+    <Footer/>
+    </footer>
     </Router>
   );
 }
