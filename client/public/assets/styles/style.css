@@ -20,4 +20,10 @@ color:#d8dae7 ;
 main {
     flex: 1 0 auto;
   }
+#ButtonColor{
+    background-color: #34608d
+}
+a:active{
+background-color: #18cae6;
+}
 
