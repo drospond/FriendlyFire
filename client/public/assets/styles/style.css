@@ -3,6 +3,7 @@
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    color: #d8dae7;
 }
 
 #NavFooter{
@@ -13,8 +14,12 @@
     color: #d8dae7;
 }
 
+input, select, textarea{
+    color: #d8dae7;
+}
 form {
 color:#d8dae7 ;
+
 }
 
 main {
@@ -23,7 +28,7 @@ main {
 #ButtonColor{
     background-color: #34608d
 }
-a:active{
+/* a:active{
 background-color: #18cae6;
-}
+} */
 

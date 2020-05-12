@@ -13,14 +13,14 @@ class Home extends Component {
       <div className="row">
         <div className="input-field col s12">
           <i className="material-icons prefix">account_circle</i>
-          <input id="icon_prefix" type="text" className="validate"/>
+          <input id="icon_prefix" type="text"/>
           <label for="icon_prefix">Username</label>
         </div>
         </div>
         <div className="row">
         <div className="input-field col s12">
           <i className="material-icons prefix">sms</i>
-          <input id="icon_sms" type="password" className="validate"/>
+          <input id="icon_sms" type="password"/>
           <label for="icon_">Password</label>
           </div>  
         </div>
