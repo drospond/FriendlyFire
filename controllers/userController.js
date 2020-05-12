@@ -25,4 +25,11 @@ router.post("/", (req, res) => {
     });
 });
 
+router.get("/:id", (req,res) => {
+    db.User.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then((user)=> res.json(user))
+})
 module.exports = router;
