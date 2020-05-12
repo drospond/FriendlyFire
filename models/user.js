@@ -11,9 +11,10 @@ module.exports = function (sequelize, DataTypes) {
       through: "UserGame",
       foreignKey: "userId",
     });
-    User.belongsToMany(User, { through: "Friend", as: "friend1", foreignKey: "userId1"});
-    User.belongsToMany(User, { through: "Friend", as: "friend2", foreignKey: "userId2"});
+    User.belongsToMany(User, { through: "Friends", as: "user1", foreignKey: "user1Id"});
+    User.belongsToMany(User, { through: "Friends", as: "user2", foreignKey: "user2Id"});
   };
+  
 
   return User;
 };
