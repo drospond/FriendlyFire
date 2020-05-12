@@ -6,7 +6,7 @@ class Home extends Component {
   render() {
     return (
       <div className="container center">
-        <h1> Welcome to FriendlyFire! </h1>
+        <h1 id="FFheadText"> Welcome to FriendlyFire! </h1>
         <br />
 <div className="row">
     <form className="col s12 center">
