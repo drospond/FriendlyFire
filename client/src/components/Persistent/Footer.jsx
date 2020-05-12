@@ -3,7 +3,7 @@ import "./Footer.css"
 
 const Footer = () => {
     return (
-        <footer className="page-footer">
+        <footer className="page-footer" id="NavFooter">
         <div className="footer-copyright">
           <div className="container center-align">
          Made with 🤞 by DDRL Entertainment 
