@@ -3,7 +3,7 @@ import React from 'react';
 const Dashboard = () => {
     return (
     <div className="container center">
-        <h2 id="FFheadText"> (insert username here)'s Dashboard</h2>
+        <h4 id="FFheadText"> (insert username here)'s Dashboard</h4>
         <br />
             <div class="row">
     <form class="col s12">
