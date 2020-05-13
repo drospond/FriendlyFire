@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     const Game = sequelize.define("Game", {
-      name: DataTypes.STRING,
+      name: {type: DataTypes.STRING, allowNull: false},
       platform: DataTypes.STRING
     });
   

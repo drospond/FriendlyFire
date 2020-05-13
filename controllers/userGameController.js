@@ -3,14 +3,14 @@ const router = express.Router();
 const db = require("../models");
 
 router.post("/", (req, res) => {
-  const newFriend = {
-    user1Id: req.body.user1Id,
-    user2Id: req.body.user2Id,
+  const newUserGame = {
+    gameId: req.body.gameId,
+    userId: req.body.userId,
   };
-  db.Friend.create(newFriend)
+  db.UserGame.create(newUserGame)
     .then(() => {
       res.json([
-        newFriend,
+        newUserGame,
         {
           success: true,
         },
@@ -21,16 +21,16 @@ router.post("/", (req, res) => {
       res.status(500);
       res.json({
         success: false,
-        message: "Failed to create friend.",
+        message: "Failed to create UserGame.",
       });
     });
 });
 
-router.delete("/:user1Id/:user2Id", (req, res) => {
-  db.Friend.destroy({
+router.delete("/:gameId/:userId", (req, res) => {
+  db.UserGame.destroy({
       where: {
-        user1Id: req.params.user1Id,
-        user2Id: req.params.user2Id
+        gameId: req.params.gameId,
+        userId: req.params.userId
       }
     })
     .then(() => {
@@ -45,9 +45,9 @@ router.delete("/:user1Id/:user2Id", (req, res) => {
       res.status(500);
       res.json({
         success: false,
-        message: "Failed to delete friend.",
+        message: "Failed to delete UserGame.",
       });
     });
 });
 
-module.exports = router;
+module.exports = router
