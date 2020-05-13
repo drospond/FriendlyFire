@@ -4,7 +4,7 @@ const Navbar = () => {
     return (
         <nav>
         <div className="nav-wrapper" id="NavFooter">
-          <a href="#" className="brand-logo center" id="FFheadText">FriendlyFire</a>
+          <a href="/" className="brand-logo center" id="FFheadText">FriendlyFire</a>
           <ul id="nav-mobile" className="left hide-on-med-and-down">
             <li><a href="/FindFriends" id="FFheadText">Find a Friend</a></li> 
         </ul>

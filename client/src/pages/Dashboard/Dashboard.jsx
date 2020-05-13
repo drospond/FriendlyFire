@@ -8,7 +8,7 @@ const Dashboard = () => {
             <div class="row">
     <form class="col s12">
       <div class="row">
-          <h5 id="FFheadText">Search for a friend!</h5>
+          <h5 id="FFheadText">Search your friends list!</h5>
         <div class="input-field col s6">
           <input placeholder="Username" id="search_by_name" type="text"/>
           <label for="search_by_name">Search By Name</label>
@@ -30,14 +30,15 @@ const Dashboard = () => {
           <tr>
               <th>Username</th>
               <th>Games</th>
-              <th>Discord Name</th>
+              <th>Discord Name</th> 
           </tr>
         </thead>
         <tbody>
             <tr>
             <td>Madarabuu2</td>
             <td>Call Of Duty: Modern Warfare</td>
-            <td>RomeoXantos</td>
+            <td>RomeoXantos</td> 
+            <a class="btn-floating btn-large waves-effect waves-light" id="removeFriends"><i class="material-icons">delete_forever</i></a>
             </tr>
         </tbody>
         </table>

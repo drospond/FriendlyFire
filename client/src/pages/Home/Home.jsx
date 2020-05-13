@@ -26,7 +26,7 @@ class Home extends Component {
         </div>
     </form>
     <div className="row">
-          <button className="btn waves-effect waves-light" id="ButtonColor" type="submit" name="action">Sign in!
+          <button className="btn waves-effect waves-light" href="/dashboard" id="ButtonColor" type="submit" name="action">Sign in!
     <i className="material-icons right">send</i>
   </button>
    </div>
