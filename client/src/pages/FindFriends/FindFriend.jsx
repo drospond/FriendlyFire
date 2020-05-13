@@ -22,6 +22,25 @@ const FindFriend = () => {
         </div>
         </div>
         </form>
+        <h4 className="left">Results:</h4>
+        <table className="centered highlight bordered">
+        <thead>
+          <tr>
+              <th>Username</th>
+              <th>Games</th>
+              <th>Discord Name</th> 
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>Madarabuu2</td>
+            <td>Call Of Duty: Modern Warfare</td>
+            <td>RomeoXantos</td> 
+            <a class="btn-floating btn-large waves-effect waves-light" id="removeFriends"><i class="material-icons">delete_forever</i></a>
+            </tr>
+        </tbody>
+        </table>
+        <a class="waves-effect waves-light btn" href="/dashboard"id="ButtonColor"><i class="material-icons left" >arrow_back</i>Back to the dashboard</a>
         </div>
     );
 };
