@@ -39,7 +39,7 @@ class AddGame extends Component {
     return (
         <div className="container center">
            <h3>Add a new game to your profile?</h3>
-           <form class="col s12">
+           <form class="col s12" onSubmit={this.handleSubmit}>
       <div class="row">
         <div class="input-field col offset-s4 s4">
           <input placeholder="Doom" id="add_a_game" type="text" name="search" onChange={this.handleChange}/>
