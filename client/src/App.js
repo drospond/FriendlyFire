@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard/Dashboard"
 import FindFriend from "./pages/FindFriends/FindFriend"
 import AddGame from './pages/AddGame/AddGame';
 import NoMatch from './pages/NoMatch/NoMatch'
+
 function App() {
   return ( 
   <Router>
