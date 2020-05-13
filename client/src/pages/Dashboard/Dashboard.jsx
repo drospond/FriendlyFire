@@ -43,6 +43,7 @@ const Dashboard = () => {
         </tbody>
         </table>
         </div>
+        <a class="waves-effect waves-light btn" href="/addgame" id="ButtonColor"><i class="material-icons left">videogame_asset</i>Add a new game?</a>
         </div>
     );
 };
