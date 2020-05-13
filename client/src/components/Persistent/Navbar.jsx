@@ -9,7 +9,7 @@ const Navbar = () => {
             <li><a href="/FindFriends" id="FFheadText">Find a Friend</a></li> 
         </ul>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li><a href="/account" id="FFheadText">Username</a></li>
+            <li><a href="/account" id="FFheadText">Edit Profile</a></li>
 </ul>
         </div>
       </nav>

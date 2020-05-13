@@ -6,7 +6,7 @@ const Footer = () => {
         <footer className="page-footer" id="NavFooter">
         <div className="footer-copyright">
           <div className="container center-align">
-         Made with 🤞 by DDRL Entertainment 
+         Made with <span role="img" aria-label="finger-heart">🤞</span> by DDRL Entertainment 
          ©2020
           </div>
         </div>
