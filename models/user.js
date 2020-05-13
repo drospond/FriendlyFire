@@ -1,8 +1,8 @@
 module.exports = function (sequelize, DataTypes) {
   const User = sequelize.define("User", {
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    handle: DataTypes.STRING,
+    email: { type: DataTypes.STRING, allowNull: false, unique: true },
+    password: { type: DataTypes.STRING, allowNull: false },
+    handle: { type: DataTypes.STRING, allowNull: false, unique: true },
     discord: DataTypes.STRING,
   });
 
@@ -11,11 +11,17 @@ module.exports = function (sequelize, DataTypes) {
       through: "UserGame",
       foreignKey: "userId",
     });
-    User.belongsToMany(User, { through: "Friends", as: "user1", foreignKey: "user1Id"});
-    User.belongsToMany(User, { through: "Friends", as: "user2", foreignKey: "user2Id"});
+    User.belongsToMany(User, {
+      through: "Friends",
+      as: "user1",
+      foreignKey: "user1Id",
+    });
+    User.belongsToMany(User, {
+      through: "Friends",
+      as: "user2",
+      foreignKey: "user2Id",
+    });
   };
-  
 
   return User;
 };
-
