@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
-// import axios from "axios"
+import FriendList from '../../components/friendHandler/friendList';
+import axios from "axios"
 
 class FindFriend extends Component{
   state = {
     friendResults: [],
-    search: ""
+    friendsToShow: [],
+    searchGame: "",
+    searchName: "",
+  }
+
+  componentDidMount = {
+
   }
 
   handleChange = (event) => {
@@ -16,8 +23,12 @@ class FindFriend extends Component{
 
   handleSubmit =(event) => {
     event.preventDefault();
-
-  }
+    const search = this.state.search;
+    axios.get(`/api/friend?=${search}`).then((res)=>{
+    this.setState({friendResults: response
+      })});
+    }
+  
 
   render(){
     return (
@@ -35,7 +46,7 @@ class FindFriend extends Component{
         <div class="input-field col s6">
         <textarea id="search_by_game" class="materialize-textarea"></textarea>
           <label for="search_by_game">Search By Game</label>
-          <button className="btn waves-effect waves-light" id="ButtonColor" type="submit" name="action">Search
+          <button className="btn waves-effect waves-light" id="ButtonColor" type="submit" name="action" onChange={this.handleSubmit}>Search
     <i className="material-icons right">search</i>
   </button> 
         </div>
@@ -51,12 +62,7 @@ class FindFriend extends Component{
           </tr>
         </thead>
         <tbody>
-            <tr>
-            <td>Madarabuu2</td>
-            <td>Call Of Duty: Modern Warfare</td>
-            <td>RomeoXantos</td> 
-            <a class="btn-floating btn-large waves-effect waves-light" id="removeFriends"><i class="material-icons">delete_forever</i></a>
-            </tr>
+         <FriendList friendResults={this.state.friendResults}/>
         </tbody>
         </table>
         <a class="waves-effect waves-light btn" href="/dashboard"id="ButtonColor"><i class="material-icons left" >arrow_back</i>Back to the dashboard</a>

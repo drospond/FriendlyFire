@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import friend from './friend'
+import Friend from './friend'
 
-const friendList = (props) => {
+const FriendList = (props) => {
         return (
             <section>
                 <table className="centered highlight bordered">
@@ -28,4 +28,4 @@ const friendList = (props) => {
     }
 
 
-export default friendList;
+export default FriendList;
