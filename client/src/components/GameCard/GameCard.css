@@ -1,0 +1,11 @@
+.card{
+    background-color: #0d0c1c;
+    border-color: #34608d;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 6px;
+}
+
+.save{
+    margin: auto;
+}

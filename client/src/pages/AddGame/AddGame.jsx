@@ -6,6 +6,7 @@ class AddGame extends Component {
   state = {
     gameResults: [],
     search: "",
+    platform: ""
   };
 
   handleChange = (event) => {
@@ -33,6 +34,10 @@ class AddGame extends Component {
       imgURL: rawGame.background_image
     }
     return newGame;
+  }
+
+  saveGame = (game) => {
+    axios.post("/api/game", game).then(()=>console.log("succes")).catch(er=>console.log(er));
   }
 
   render() {
@@ -69,26 +74,9 @@ class AddGame extends Component {
           <i className="material-icons left">arrow_back</i>Back to the dashboard
         </a>
         {this.state.gameResults.map(({genre, imgURL, name, platform})=>{
-          return <GameCard imgURL={imgURL} name={name} platform={platform}/>
+          return <GameCard imgURL={imgURL} name={name} platform={platform} saveGame={this.saveGame}/>
         })
           }
-        {/* <table className="centered highlight bordered">
-        <thead>
-          <tr>
-              <th>Name</th>
-              <th>Console</th>
-              <th>Genre</th> 
-          </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td>Call Of Duty: Modern Warfare</td>
-            <td>PC</td>
-            <td>First-Person Shooter</td> 
-            <a class="btn-floating btn-large waves-effect waves-light" id="removeFriends"><i class="material-icons">delete_forever</i></a>
-            </tr>
-        </tbody>
-        </table> */}
       </div>
     );
   }
