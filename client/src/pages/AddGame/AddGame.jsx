@@ -6,7 +6,6 @@ class AddGame extends Component {
   state = {
     gameResults: [],
     search: "",
-    platform: ""
   };
 
   handleChange = (event) => {
@@ -18,7 +17,7 @@ class AddGame extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const search = this.state.search
+    const search = this.state.search;
       axios.get(`https://api.rawg.io/api/games?search=${search}`).then((res)=>{
         const gameArray = res.data.results.map((rawGame)=>{
           return this.createGameObj(rawGame);

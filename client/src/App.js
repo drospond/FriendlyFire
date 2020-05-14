@@ -9,6 +9,7 @@ import CA from "./pages/CA/CA"
 import Dashboard from "./pages/Dashboard/Dashboard" 
 import FindFriend from "./pages/FindFriends/FindFriend"
 import AddGame from './pages/AddGame/AddGame';
+import NoMatch from './pages/NoMatch/NoMatch'
 
 function App() {
   return ( 
@@ -36,6 +37,9 @@ function App() {
         </Route>
         <Route>
           <AddGame/>
+        </Route>
+        <Route>
+          <NoMatch/>
         </Route>
       </Switch>
     </div>

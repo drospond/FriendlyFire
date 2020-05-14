@@ -1,16 +1,40 @@
-import React from 'react';
+import React, {Component} from 'react';
+// import axios from "axios"
 
-const Dashboard = () => {
-    return (
+class Dashboard extends Component {
+  state ={
+    friendResults: [],
+    search: "",
+  }
+
+  componentDidMount(){
+
+
+  }
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  handleSubmit =(event) => {
+    event.preventDefault();
+
+  }
+
+    render(){
+      return (
     <div className="container center">
-        <h2 id="FFheadText"> (insert username here)'s Dashboard</h2>
+        <h4 id="FFheadText"> (insert username here)'s Dashboard</h4>
         <br />
             <div class="row">
     <form class="col s12">
       <div class="row">
           <h5 id="FFheadText">Search your friends list!</h5>
         <div class="input-field col s6">
-          <input placeholder="Username" id="search_by_name" type="text"/>
+          <input placeholder="Username" id="search_by_name" type="text" onChange={this.handleChange}/>
           <label for="search_by_name">Search By Name</label>
           <button className="btn waves-effect waves-light" id="ButtonColor" type="submit" name="action">Search
     <i className="material-icons right">search</i>
@@ -19,7 +43,7 @@ const Dashboard = () => {
         <div class="input-field col s6">
         <textarea id="search_by_game" class="materialize-textarea"></textarea>
           <label for="search_by_game">Search By Game</label>
-          <button className="btn waves-effect waves-light" id="ButtonColor" type="submit" name="action">Search
+          <button className="btn waves-effect waves-light" id="ButtonColor" type="submit" name="action" onChange={this.handleChange}>Search
     <i className="material-icons right">search</i>
   </button>
         </div>
@@ -44,8 +68,8 @@ const Dashboard = () => {
         </table>
         </div>
         <a class="waves-effect waves-light btn" href="/addgame" id="ButtonColor"><i class="material-icons left">videogame_asset</i>Add a new game?</a>
-        </div>
-    );
+    </div>)
+    }
 };
 
 export default Dashboard;

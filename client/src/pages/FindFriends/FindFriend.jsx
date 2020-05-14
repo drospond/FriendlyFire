@@ -1,6 +1,25 @@
-import React from 'react';
+import React, {Component} from 'react';
+// import axios from "axios"
 
-const FindFriend = () => {
+class FindFriend extends Component{
+  state = {
+    friendResults: [],
+    search: ""
+  }
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  handleSubmit =(event) => {
+    event.preventDefault();
+
+  }
+
+  render(){
     return (
         <div className="container center">
             <form class="col s12">
@@ -9,7 +28,7 @@ const FindFriend = () => {
         <div class="input-field col s6">
           <input placeholder="Username" id="search_by_name" type="text"/>
           <label for="search_by_name">Search By Name</label>
-          <button className="btn waves-effect waves-light" id="ButtonColor" type="submit" name="action">Search
+          <button className="btn waves-effect waves-light" id="ButtonColor" type="submit" name="action" onChange={this.handleSubmit}>Search
     <i className="material-icons right">search</i>
   </button>
         </div>
@@ -44,5 +63,5 @@ const FindFriend = () => {
         </div>
     );
 };
-
+}
 export default FindFriend;
