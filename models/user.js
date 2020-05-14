@@ -13,12 +13,12 @@ module.exports = function (sequelize, DataTypes) {
     });
     User.belongsToMany(User, {
       through: "Friends",
-      as: "user1",
+      as: "User1",
       foreignKey: "user1Id",
     });
     User.belongsToMany(User, {
       through: "Friends",
-      as: "user2",
+      as: "User2",
       foreignKey: "user2Id",
     });
   };
