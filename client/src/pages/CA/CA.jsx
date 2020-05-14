@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./CA.css";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 class CreateAccount extends Component {
@@ -63,16 +62,18 @@ class CreateAccount extends Component {
               <i className="material-icons right">send</i>
             </button>
           </div>
-        
         </div>
       </div>
     );
   }
+<<<<<<< HEAD
+=======
 
 
 
 
 
+>>>>>>> 647725e825d4ff70080c91854520c8a5377b28ba
 }
 
 export default CreateAccount;
