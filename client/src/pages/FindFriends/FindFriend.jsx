@@ -21,32 +21,49 @@ class FindFriend extends Component{
     });
   };
 
-  handleSubmit =(event) => {
+  handleSubmitName =(event) => {
     event.preventDefault();
-    const search = this.state.search;
-    axios.get(`/api/friend?=${search}`).then((res)=>{
-    this.setState({friendResults: response
-      })});
+    const searchName = this.state.searchName;
+    axios.get(`/api/friend/find?name=${searchName}`).then((response =>{
+      console.log(response.data)
+      // debugger
+    this.setState({friendResults: [response.data]
+      })})).catch(err => {
+        if(err){
+            console.log(err)
+        }});
     }
   
+    handleSubmitGame =(event) => {
+      event.preventDefault();
+      const searchGame = this.state.search;
+      axios.get(`/api/friend/find?game=${searchGame}`).then((response =>{
+        console.log(response.data.results)
+      this.setState({friendResults: response.data.results
+        })})).catch(err => {
+          if(err){
+              console.log(err)
+          }});
+      }
+    
 
   render(){
     return (
         <div className="container center">
-            <form class="col s12">
+            <form class="col s12" onSubmit={this.handleSubmitName}>
       <div class="row">
           <h5 id="FFheadText">Search for a new friend!</h5>
         <div class="input-field col s6">
-          <input placeholder="Username" id="search_by_name" type="text"/>
+          <input placeholder="Username" id="search_by_name" type="text" name="searchName" onChange={this.handleChange}/>
           <label for="search_by_name">Search By Name</label>
-          <button className="btn waves-effect waves-light" id="ButtonColor" type="submit" name="action" onChange={this.handleSubmit}>Search
+          <button className="btn waves-effect waves-light" id="ButtonColor" type="submit" name="action" >Search
     <i className="material-icons right">search</i>
   </button>
         </div>
         <div class="input-field col s6">
         <textarea id="search_by_game" class="materialize-textarea"></textarea>
           <label for="search_by_game">Search By Game</label>
-          <button className="btn waves-effect waves-light" id="ButtonColor" type="submit" name="action" onChange={this.handleSubmit}>Search
+          <button className="btn waves-effect waves-light" id="ButtonColor" type="submit" name="action" onChange={this.handleChange} onSubmit={this.handleSubmit}>Search
     <i className="material-icons right">search</i>
   </button> 
         </div>
@@ -56,6 +73,7 @@ class FindFriend extends Component{
         <table className="centered highlight bordered">
         <thead>
           <tr>
+            <th>User's ID</th>
               <th>Username</th>
               <th>Games</th>
               <th>Discord Name</th> 
