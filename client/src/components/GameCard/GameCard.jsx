@@ -26,21 +26,21 @@ const GameCard = (props) => {
     floatLeft: { float: "left" },
   };
   return (
-    <div class="col s12 m7">
-      <div class="card horizontal">
-        <div class="card-image">
-          <img src={props.imgURL} style={style.cardImg} />
+    <div className="col s12 m7">
+      <div className="card horizontal">
+        <div className="card-image">
+          <img className="cardImage" src={props.imgURL} alt={`${props.name}`}/>
         </div>
-        <div class="card-stacked">
-          <div class="card-content">
+        <div className="card-stacked">
+          <div className="card-content">
             <div className="row">
-              <div className="col s5">
+              <div className="col s6">
                 <div style={style.floatLeft}>
                   <h4>{props.name}</h4>
                 </div>
               </div>
               <form>
-                <div className="col s6">
+                <div className="col s5">
                   Platforms:{" "}
                   {props.platform.map((platform) => {
                     return (
@@ -50,9 +50,9 @@ const GameCard = (props) => {
                             name="platform"
                             type="radio"
                             onChange={handleChange}
-                            value={platform.platform.name}
+                            value={platform}
                           />
-                          <span>{platform.platform.name}</span>
+                          <span>{platform}</span>
                         </label>
                       </p>
                     );

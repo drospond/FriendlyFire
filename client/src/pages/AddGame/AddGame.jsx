@@ -18,7 +18,7 @@ class AddGame extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const search = this.state.search;
+    const search = this.state.search
       axios.get(`https://api.rawg.io/api/games?search=${search}`).then((res)=>{
         const gameArray = res.data.results.map((rawGame)=>{
           return this.createGameObj(rawGame);
@@ -28,16 +28,58 @@ class AddGame extends Component {
   }
 
   createGameObj = (rawGame) => {
+    const platforms = this.filterPlatforms(rawGame.platforms);
     const newGame = {
       name: rawGame.name,
-      platform: rawGame.platforms,
+      platform: platforms,
       imgURL: rawGame.background_image
     }
     return newGame;
   }
 
+  filterPlatforms = (platforms) =>{
+    let platformArray = [];
+    for(var i = 0; i < platforms.length; i++){
+      switch (platforms[i].platform.name){
+        case "PC":
+        case "Linux":
+        case "macOS":
+          if(!platformArray.includes("PC")){platformArray.push("PC")};
+          break;
+        case "PlayStation 4":
+        case "PlayStation 3":
+        case "PlayStation 2":
+        case "PlayStation":
+          if(!platformArray.includes("PlayStation")){platformArray.push("PlayStation")};
+          break;
+        case "Xbox One":
+        case "Xbox 360":
+        case "Xbox":
+          if(!platformArray.includes("Xbox")){platformArray.push("Xbox")};
+          break;
+        case "Nintendo Switch":
+          if(!platformArray.includes("Nintendo Switch")){platformArray.push("Nintendo Switch")};
+          break;
+        default:
+          break;
+      }
+    }
+    return platformArray
+  }
+
   saveGame = (game) => {
-    axios.post("/api/game", game).then(()=>console.log("succes")).catch(er=>console.log(er));
+    let gameId;
+    axios.get(`/api/game?name=${game.name}&platform=${game.platform}`).then((gameExists)=>{
+      if(!gameExists.data){
+        axios.post("/api/game", game).then(()=>console.log("succes")).catch(er=>console.log(er));
+      }else{
+        gameId = gameExists.data.id;
+      }
+    })
+    //axios.post("/api/usergame", {gameId, userId}).then(()=>console.log("game saved")).catch(er=>console.log(er));
+    //need a way to get the signed in user's id 
+    //need to assign game id if game is just being created in database
+    //probably need to async await in the end to avoid .then hell
   }
 
   render() {
@@ -48,7 +90,7 @@ class AddGame extends Component {
           <div className="row">
             <div className="input-field col offset-s4 s4">
               <input
-                placeholder="Doom"
+                placeholder="Search"
                 id="add_a_game"
                 type="text"
                 name="search"
@@ -61,7 +103,7 @@ class AddGame extends Component {
                 type="submit"
                 name="action"
               >
-                Add Game<i className="material-icons right">search</i>
+                Find Game<i className="material-icons right">search</i>
               </button>
             </div>
           </div>

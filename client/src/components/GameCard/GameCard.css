@@ -9,3 +9,7 @@
 .save{
     margin: auto;
 }
+
+.cardImage{
+    max-height: 200px;
+}
