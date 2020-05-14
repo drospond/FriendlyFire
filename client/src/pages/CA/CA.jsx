@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./CA.css";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 class CreateAccount extends Component {
@@ -54,7 +53,7 @@ class CreateAccount extends Component {
           <div className="row">
             <button
               className="btn waves-effect waves-light"
-              href="/about"
+              href="/AboutMe"
               id="ButtonColor"
               type="submit"
               name="action"
@@ -63,7 +62,6 @@ class CreateAccount extends Component {
               <i className="material-icons right">send</i>
             </button>
           </div>
-        
         </div>
       </div>
     );

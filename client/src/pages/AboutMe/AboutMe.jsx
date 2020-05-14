@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./AboutMe.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import GameCard from "../../components/GameCard/GameCard";
@@ -139,57 +138,55 @@ class AboutMe extends Component {
                 <label for="icon_gamepad">Discord Username</label>
               </div>
             </div>
-            <div className="container center">
-              <h3>Add a new game to your profile?</h3>
-              <form className="col s12" onSubmit={this.handleSubmit}>
-                <div className="row">
-                  <div className="input-field col offset-s4 s4">
-                    <input
-                      placeholder="Search"
-                      id="add_a_game"
-                      type="text"
-                      name="search"
-                      onChange={this.handleChange}
-                    />
-                    <label for="add_a_game">Search Game here</label>
-                    <button
-                      className="btn waves-effect waves-light"
-                      id="ButtonColor"
-                      type="submit"
-                      name="action"
-                    >
-                      Find Game<i className="material-icons right">search</i>
-                    </button>
-                  </div>
-                </div>
-              </form>
-
-              {this.state.gameResults.map(
-                ({ genre, imgURL, name, platform }) => {
-                  return (
-                    <GameCard
-                      imgURL={imgURL}
-                      name={name}
-                      platform={platform}
-                      saveGame={this.saveGame}
-                    />
-                  );
-                }
-              )}
+          </form>
+        </div>
+        <div className="container center">
+          <h3>Add your owned ames to your profile!</h3>
+          <form className="col s12" onSubmit={this.handleSubmit}>
+            <div className="row">
+              <div className="input-field col offset-s4 s4">
+                <input
+                  placeholder="Search"
+                  id="add_a_game"
+                  type="text"
+                  name="search"
+                  onChange={this.handleChange}
+                />
+                <label for="add_a_game">Search Game here</label>
+                <button
+                  className="btn waves-effect waves-light"
+                  id="ButtonColor"
+                  type="submit"
+                  name="action"
+                >
+                  Find Game<i className="material-icons right">search</i>
+                </button>
+              </div>
             </div>
           </form>
-          <div className="row">
-            <button
-              className="btn waves-effect waves-light"
-              href="/Dashboard"
-              id="ButtonColor"
-              type="submit"
-              name="action"
-            >
-              Done! Go Find Friends!
-              <i className="material-icons right">send</i>
-            </button>
-          </div>
+        </div>
+
+        {this.state.gameResults.map(({ genre, imgURL, name, platform }) => {
+          return (
+            <GameCard
+              imgURL={imgURL}
+              name={name}
+              platform={platform}
+              saveGame={this.saveGame}
+            />
+          );
+        })}
+        <div className="row">
+          <button
+            className="btn waves-effect waves-light"
+            href="/Dashboard"
+            id="ButtonColor"
+            type="submit"
+            name="action"
+          >
+            Done! Go Find Friends!
+            <i className="material-icons right">send</i>
+          </button>
         </div>
       </div>
     );
