@@ -51,6 +51,23 @@ router.delete("/:user1Id/:user2Id", (req, res) => {
     });
 });
 
+router.get("/find", (req, res) => {
+  let newObjectToQuery = {};
+  if (req.query.name) {
+    newObjectToQuery.handle = req.query.name;
+  }
+  db.User.findOne({
+    where: newObjectToQuery,
+    attributes: ["id", "handle", "discord"]
+  })
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 router.get("/", (req, res) => {
   const userId = 4;
   db.Friend.findAll({
