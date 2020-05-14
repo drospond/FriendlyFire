@@ -36,10 +36,10 @@ function App() {
         <FindFriend/>
         </Route>
         <Route>
-          <AddGame/>
+          <AddGame exact path={["/addgame"]}/>
         </Route>
         <Route>
-          <NoMatch/>
+          <NoMatch exact path={["*"]}/>
         </Route>
       </Switch>
     </div>

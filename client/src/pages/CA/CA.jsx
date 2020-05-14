@@ -66,14 +66,11 @@ class CreateAccount extends Component {
       </div>
     );
   }
-<<<<<<< HEAD
-=======
 
 
 
 
 
->>>>>>> 647725e825d4ff70080c91854520c8a5377b28ba
 }
 
 export default CreateAccount;

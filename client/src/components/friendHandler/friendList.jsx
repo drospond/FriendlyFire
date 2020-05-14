@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
-import friend from './friend'
+import Friend from './friend'
 
-const friendList = (props) => {
+const FriendList = (props) => {
         return (
-            <section>
-                <table className="centered highlight bordered">
-        <thead>
-          <tr>
-              <th>Username</th>
-              <th>Games</th>
-              <th>Discord Name</th> 
-          </tr>
-        </thead>
         <tbody>
             {props.friendResults.map((friendResults) =>( 
                 <Friend {...friendResults}
@@ -22,10 +13,8 @@ const friendList = (props) => {
               discordName={friendResults.discord}/>
             ))}
         </tbody>
-        </table>
-            </section>
         );
     }
 
 
-export default friendList;
+export default FriendList;
