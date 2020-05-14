@@ -27,6 +27,13 @@ app.use("/api/auth", AuthController);
 app.use("/api/friend", FriendController);
 app.use("/api/usergame", UserGameController);
 
+app.use(express.static("client/build"));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build/index.html"));
+});
+
+
 // db.sequelize.sync({force: true}).then(function () {
 db.sequelize.sync().then(function () {
   app.listen(PORT, () => {
