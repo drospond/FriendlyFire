@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import "./CA.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -68,6 +69,19 @@ class CreateAccount extends Component {
       </div>
     );
   }
+=======
+// import "./CA.css";
+// import { Link, Redirect } from "react-router-dom";
+
+class CreateAccount extends Component {
+ state = {
+   username: "",
+   email: "",
+   password: "",
+ }
+
+
+>>>>>>> c70595779b2b06ae25226e93bef24ef65329dee4
 }
 
 export default CreateAccount;

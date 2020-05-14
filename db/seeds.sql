@@ -1,5 +1,13 @@
 
 USE friendly_fire_db;
+CREATE TABLE users (
+    email VARCHAR(255),
+    password VARCHAR(255),
+    handle VARCHAR(255),
+    discord VARCHAR(255),
+    createdAt VARCHAR(255),
+    updatedAt VARCHAR(255)
+);
 
 INSERT INTO users (email, password, handle, discord, createdAt, updatedAt)
 VALUES (
