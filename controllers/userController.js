@@ -6,9 +6,8 @@ router.post("/", (req, res) => {
   const email = req.body.email.trim();
   const password = req.body.password.trim();
   const handle = req.body.handle.trim();
-  const discord = req.body.discord.trim();
 
-  db.User.create({ email, password, handle, discord })
+  db.User.create({ email, password, handle})
     .then(() => {
       res.json({
         success: true,
