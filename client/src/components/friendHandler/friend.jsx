@@ -1,5 +1,6 @@
 import React from 'react';
-const friend = (props) => {
+
+const Friend = (props) => {
     return (
         <div>
         <tr scope="row">
