@@ -98,13 +98,6 @@ class Dashboard extends Component {
           </thead>
           <FriendList friendResults={this.state.friendResults} />
         </table>
-        <a
-          className="waves-effect waves-light btn"
-          href="/addgame"
-          id="ButtonColor"
-        >
-          <i class="material-icons left">videogame_asset</i>Add a new game?
-        </a>
       </div>
     );
   }
