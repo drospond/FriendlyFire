@@ -54,7 +54,11 @@ function App() {
     </header>
     <main>
       <div>
-      <NavBar/>
+      <NavBar
+      isLoggedIn={isLoggedIn}
+      logOutUser={logOutUser}
+      userObject={userObject}
+      />
     <Switch>
       <Route exact path={["/", "/landing"]} render={(props) => (
               <Home {...props} checkForToken={checkForToken} />
