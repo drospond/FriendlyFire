@@ -88,6 +88,28 @@ class AboutMe extends Component {
     return platformArray;
   };
 
+  saveGame = async (game) => {
+    let gameId;
+    await axios
+      .get(`/api/game?name=${game.name}&platform=${game.platform}`)
+      .then(async (gameExists) => {
+        if (!gameExists.data) {
+          await axios
+            .post("/api/game", game)
+            .then(async () => {
+              console.log("succes");
+              await axios.get(`/api/game/?name=${game.name}&platform=${game.platform}`).then((gameNameRes)=>{
+                gameId=gameNameRes.data.id;
+              })
+            })
+            .catch((er) => console.log(er));
+        } else {
+          gameId = gameExists.data.id;
+        }
+      });
+    await axios.post("/api/usergame", {gameId: gameId, userId: this.props.match.params.id}).then(()=>console.log("game saved")).catch(er=>console.log(er));
+  };
+
   render() {
     return (
       <div className="container center">
