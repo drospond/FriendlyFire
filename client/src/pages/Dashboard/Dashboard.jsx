@@ -27,7 +27,7 @@ class Dashboard extends Component {
     render(){
       return (
     <div className="container center">
-        <h4 id="FFheadText"> (insert username here)'s Dashboard</h4>
+        <h4 id="FFheadText">Dashboard</h4>
         <br />
             <div class="row">
     <form class="col s12">
