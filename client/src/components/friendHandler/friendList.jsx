@@ -8,7 +8,7 @@ const FriendList = (props) => {
                 <Friend {...friendResults}
                 key ={friendResults.id} 
               id={friendResults.id}
-              Username={friendResults.username}
+              Username={friendResults.handle}
               Games={friendResults.games}
               discordName={friendResults.discord}/>
             ))}

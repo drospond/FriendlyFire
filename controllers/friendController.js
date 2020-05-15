@@ -68,6 +68,18 @@ router.get("/find", (req, res) => {
     });
 });
 
+router.get("/findAll", (req, res) => {
+  db.User.findAll({
+    attributes: ["id", "handle", "discord"]
+  })
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 router.get("/", (req, res) => {
   const userId = 4;
   db.Friend.findAll({
