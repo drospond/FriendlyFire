@@ -1,16 +1,25 @@
 import React, {Component} from 'react';
-// import axios from "axios"
+import FriendList from "../../components/friendHandler/friendList"
+import axios from "axios"
 
 class Dashboard extends Component {
   state ={
     friendResults: [],
-    search: "",
+    searchGame: "",
+    searchName: "",
   }
 
   componentDidMount(){
+    axios.get(`/api/friend/findAll`).then(response => {
+    console.log(response.data)
+    // this.setState({friendResults: [response.data]
+    // })
+  }).catch(err => {
+    if(err){
+        console.log(err)
+    }})
+}
 
-
-  }
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -19,7 +28,11 @@ class Dashboard extends Component {
     });
   };
 
-  handleSubmit =(event) => {
+  handleSubmitName =(event) => {
+    event.preventDefault();
+
+  }
+  handleSubmitGame =(event) => {
     event.preventDefault();
 
   }
@@ -58,12 +71,7 @@ class Dashboard extends Component {
           </tr>
         </thead>
         <tbody>
-            <tr>
-            <td>Madarabuu2</td>
-            <td>Call Of Duty: Modern Warfare</td>
-            <td>RomeoXantos</td> 
-            <a class="btn-floating btn-large waves-effect waves-light" id="removeFriends"><i class="material-icons">delete_forever</i></a>
-            </tr>
+            {/* <FriendList/> */}
         </tbody>
         </table>
         </div>

@@ -11,7 +11,7 @@ class FindFriend extends Component{
   }
 
   componentDidMount = {
-
+  
   }
 
   handleChange = (event) => {
@@ -36,7 +36,7 @@ class FindFriend extends Component{
   
     handleSubmitGame =(event) => {
       event.preventDefault();
-      const searchGame = this.state.search;
+      const searchGame = this.state.searchGame;
       axios.get(`/api/friend/find?game=${searchGame}`).then((response =>{
         console.log(response.data.results)
       this.setState({friendResults: response.data.results
@@ -79,9 +79,7 @@ class FindFriend extends Component{
               <th>Discord Name</th> 
           </tr>
         </thead>
-        <tbody>
          <FriendList friendResults={this.state.friendResults}/>
-        </tbody>
         </table>
         <a class="waves-effect waves-light btn" href="/dashboard"id="ButtonColor"><i class="material-icons left" >arrow_back</i>Back to the dashboard</a>
         </div>
