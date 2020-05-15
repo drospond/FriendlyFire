@@ -54,7 +54,7 @@ class FindFriend extends Component{
         <h5 id="FFheadText">Search for a new friend!</h5>
         </div>
         <div className="row"> 
-        <form className="coloffset-s3" onSubmit={this.handleSubmitName}>
+        <form className="col s3 offset-s1" onSubmit={this.handleSubmitName}>
         <div class="input-field col">
           <input placeholder="Username" id="search_by_name" type="text" name="searchName" onChange={this.handleChange}/>
           <label for="search_by_name">Search By Name</label>
@@ -63,7 +63,7 @@ class FindFriend extends Component{
   </button>
     </div>
     </form>
-    <form className="col offset-s3" onSubmit={this.handleSubmitGame}>
+    <form className="col s3 offset-s4" onSubmit={this.handleSubmitGame}>
         <div className="input-field col">
         <textarea id="search_by_game" className="materialize-textarea" placeholder="Super Smash Bros" name="searchGame" onChange={this.handleChange}></textarea>
           <label for="search_by_game">Search By Game</label>
