@@ -70,9 +70,7 @@ class Dashboard extends Component {
               <th>Discord Name</th> 
           </tr>
         </thead>
-        <tbody>
             {/* <FriendList/> */}
-        </tbody>
         </table>
         </div>
         <a class="waves-effect waves-light btn" href="/addgame" id="ButtonColor"><i class="material-icons left">videogame_asset</i>Add a new game?</a>
