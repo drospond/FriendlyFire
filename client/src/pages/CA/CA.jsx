@@ -17,12 +17,12 @@ class CreateAccount extends Component {
   };
   // TO-DO link page to dashboard via pageChange function
   // function pageChange(){
-  //   window.location='http:'
+  //   window.location='about'
   // }
   handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("/api/user", {
+      .post("api/user", {
         email: this.state.email,
         handle: this.state.handle,
         password: this.state.password,
@@ -78,10 +78,11 @@ class CreateAccount extends Component {
           <div className="row">
             <a
               className="btn waves-effect waves-light"
-              href="/about"
+              href="/AboutMe"
               id="ButtonColor"
               name="action"
               onClick={this.handleSubmit}
+              
               
             >
               Next!

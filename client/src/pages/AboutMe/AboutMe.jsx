@@ -5,8 +5,6 @@ import GameCard from "../../components/GameCard/GameCard";
 
 class AboutMe extends Component {
   state = {
-    firstName: "",
-    lastName: "",
     discord: "",
     gameResults: [],
     search: "",
@@ -21,8 +19,6 @@ class AboutMe extends Component {
     event.preventDefault();
     axios
       .put(`/api/user/${this.props.match.params.id}`, {
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
         discord: this.state.discord,
         games: this.state.games,
       })
@@ -92,26 +88,6 @@ class AboutMe extends Component {
     return platformArray;
   };
 
-  saveGame = (game) => {
-    let gameId;
-    axios
-      .get(`/api/game?name=${game.name}&platform=${game.platform}`)
-      .then((gameExists) => {
-        if (!gameExists.data) {
-          axios
-            .post("/api/game", game)
-            .then(() => console.log("succes"))
-            .catch((er) => console.log(er));
-        } else {
-          gameId = gameExists.data.id;
-        }
-      });
-    //axios.post("/api/usergame", {gameId, userId}).then(()=>console.log("game saved")).catch(er=>console.log(er));
-    //need a way to get the signed in user's id
-    //need to assign game id if game is just being created in database
-    //probably need to async await in the end to avoid .then hell
-  };
-
   render() {
     return (
       <div className="container center">
@@ -121,27 +97,15 @@ class AboutMe extends Component {
           <form className="col s12 center">
             <div className="row">
               <div className="input-field col s12">
-                <i className="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" />
-                <label for="icon_prefix">First Name</label>
-              </div>
-              <div className="input-field col s12">
-                <i className="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" />
-                <label for="icon_prefix">Last Name</label>
-              </div>
-            </div>
-            <div className="row">
-              <div className="input-field col s12">
                 <i className="material-icons prefix">gamepad</i>
-                <input id="icon_gamepad" type="password" />
+                <input id="icon_gamepad" type="text" />
                 <label for="icon_gamepad">Discord Username</label>
               </div>
             </div>
           </form>
         </div>
         <div className="container center">
-          <h3>Add your owned ames to your profile!</h3>
+          <h3>Add your games to your profile!</h3>
           <form className="col s12" onSubmit={this.handleSubmit}>
             <div className="row">
               <div className="input-field col offset-s4 s4">
