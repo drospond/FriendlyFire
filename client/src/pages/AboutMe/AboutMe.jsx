@@ -88,7 +88,6 @@ class AboutMe extends Component {
     return platformArray;
   };
 
-<<<<<<< HEAD
   saveGame = async (game) => {
     let gameId;
     await axios
@@ -111,8 +110,6 @@ class AboutMe extends Component {
     await axios.post("/api/usergame", {gameId: gameId, userId: this.props.match.params.id}).then(()=>console.log("game saved")).catch(er=>console.log(er));
   };
 
-=======
->>>>>>> master
   render() {
     return (
       <div className="container center">
