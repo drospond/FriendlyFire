@@ -132,7 +132,6 @@ class AboutMe extends Component {
             <div className="row">
               <div className="input-field col offset-s4 s4">
                 <input
-                  placeholder="Search"
                   id="add_a_game"
                   type="text"
                   name="search"
