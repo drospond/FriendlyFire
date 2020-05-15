@@ -1,12 +1,11 @@
-
 const express = require("express");
 const router = express.Router();
 const db = require("../models");
 const jwt = require("jsonwebtoken");
 
 router.post("/", (req, res) => {
-    console.log("Authentication POST route");
-    console.log(req.body.email);
+  console.log("Authentication POST route");
+  console.log(req.body.email);
   db.User.findOne({
     where: { email: req.body.email.trim() },
   })

@@ -1,26 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
   return (
     <nav>
       <div className="nav-wrapper" id="NavFooter">
-        <a href="/dashboard" className="brand-logo center" id="FFheadText">
+        <Link to={`/dashboard/${props.userObject.id}`} className="brand-logo center" id="FFheadText">
           FriendlyFire
-        </a>
+        </Link>
         {props.isLoggedIn ? (
           <>
             <ul id="nav-mobile" className="left hide-on-med-and-down">
               <li>
-                <a href="/FindFriends" id="FFheadText">
+                <Link to={`/FindFriends/${props.userObject.id}`} id="FFheadText">
                   Find a Friend
-                </a>
+                </Link>
               </li>
             </ul>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
-                <a href="/account" id="FFheadText">
+                <Link to={`/account/${props.userObject.id}`} id="FFheadText">
                   Edit Profile
-                </a>
+                </Link>
               </li>
               <li onClick={props.logOutUser}>
                 <a href="/">Sign Out</a>
