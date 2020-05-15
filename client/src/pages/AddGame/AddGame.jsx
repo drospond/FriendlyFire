@@ -66,20 +66,27 @@ class AddGame extends Component {
     return platformArray
   }
 
-  saveGame = (game) => {
+  saveGame = async (game) => {
     let gameId;
-    axios.get(`/api/game?name=${game.name}&platform=${game.platform}`).then((gameExists)=>{
-      if(!gameExists.data){
-        axios.post("/api/game", game).then(()=>console.log("succes")).catch(er=>console.log(er));
-      }else{
-        gameId = gameExists.data.id;
-      }
-    })
-    //axios.post("/api/usergame", {gameId, userId}).then(()=>console.log("game saved")).catch(er=>console.log(er));
-    //need a way to get the signed in user's id 
-    //need to assign game id if game is just being created in database
-    //probably need to async await in the end to avoid .then hell
-  }
+    await axios
+      .get(`/api/game?name=${game.name}&platform=${game.platform}`)
+      .then(async (gameExists) => {
+        if (!gameExists.data) {
+          await axios
+            .post("/api/game", game)
+            .then(async () => {
+              console.log("succes");
+              await axios.get(`/api/game/?name=${game.name}&platform=${game.platform}`).then((gameNameRes)=>{
+                gameId=gameNameRes.data.id;
+              })
+            })
+            .catch((er) => console.log(er));
+        } else {
+          gameId = gameExists.data.id;
+        }
+      });
+    await axios.post("/api/usergame", {gameId: gameId, userId: this.props.match.params.id}).then(()=>console.log("game saved")).catch(er=>console.log(er));
+  };
 
   render() {
     return (
