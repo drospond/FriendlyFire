@@ -22,7 +22,7 @@ class CreateAccount extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("/api/user", {
+      .post("api/user", {
         email: this.state.email,
         handle: this.state.handle,
         password: this.state.password,
