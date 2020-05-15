@@ -17,6 +17,8 @@ router.post("/", (req, res) => {
           {
             email: foundUser.email,
             id: foundUser.id,
+            handle: foundUser.handle,
+            discord: foundUser.discord,
             exp: Math.floor(Date.now() / 1000) + 60 * 60,
           },
           process.env.REACT_APP_SECRET_KEY
