@@ -56,7 +56,7 @@ class Home extends Component {
               <div className="input-field col s12">
                 <i className="material-icons prefix">account_circle</i>
                 <input id="icon_prefix" type="text" name="email" onChange={this.handleInputChange}/>
-                <label for="icon_prefix">Username</label>
+                <label for="icon_prefix">Email</label>
               </div>
             </div>
             <div className="row">
