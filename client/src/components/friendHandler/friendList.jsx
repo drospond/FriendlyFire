@@ -9,7 +9,6 @@ const FriendList = (props) => {
                 key ={friendResults.id} 
               id={friendResults.id}
               Username={friendResults.handle}
-              Games={friendResults.games}
               discordName={friendResults.discord}/>
             ))}
         </tbody>

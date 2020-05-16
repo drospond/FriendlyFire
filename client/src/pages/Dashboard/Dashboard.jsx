@@ -92,7 +92,6 @@ class Dashboard extends Component {
             <tr>
               <th>User ID</th>
               <th>Username</th>
-              <th>Games</th>
               <th>Discord Name</th>
             </tr>
           </thead>

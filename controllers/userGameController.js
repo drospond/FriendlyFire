@@ -50,4 +50,24 @@ router.delete("/:gameId/:userId", (req, res) => {
     });
 });
 
+//get all owned games route
+router.get("/:id", (req, res) => {
+  db.User.findOne({
+    where: {
+        id: req.params.id
+    },
+    include:[{
+      model: db.Game,
+      attributes: ["id", "name", "platform"]
+    }]
+  })
+    .then((result) => {
+      res.json(result.Games);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json(err);
+    });
+});
+
 module.exports = router
