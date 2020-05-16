@@ -80,8 +80,8 @@ router.get("/findAll", (req, res) => {
     });
 });
 
-router.get("/", (req, res) => {
-  const userId = 4;
+router.get("/:id", (req, res) => {
+  const userId = req.params.id;
   db.Friend.findAll({
     where: {
       [Op.or]: {
@@ -102,7 +102,7 @@ router.get("/", (req, res) => {
   })
     .then((result) => {
       const friendsArray = result.map((friendship)=>{
-        if(friendship.User1.id !== userId){
+        if(Number(friendship.User1.id) !== Number(userId)){
           return friendship.User1;
         }
         if(friendship.User2.id !== userId){
