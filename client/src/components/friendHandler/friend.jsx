@@ -4,8 +4,7 @@ const Friend = (props) => {
     return (
         <tr>
         <td>{props.id}</td>
-      <td>{props.username}</td>
-      <td>{props.game}</td>
+      <td>{props.handle}</td>
       <td>{props.discord}</td>
     </tr>
     );
