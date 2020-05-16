@@ -12,7 +12,7 @@ class Dashboard extends Component {
 
   componentDidMount() {
     axios
-      .get(`/api/friend/findAll`)
+      .get(`/api/friend/${this.props.match.params.id}`)
       .then((response) => {
         console.log(response.data);
         this.setState({ friendResults: response.data });
