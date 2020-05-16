@@ -5,7 +5,7 @@ import GameCard from "../../components/GameCard/GameCard";
 
 class AboutMe extends Component {
   state = {
-    discord: "",
+    discordName: "",
     gameResults: [],
     search: "",
   };
@@ -15,12 +15,12 @@ class AboutMe extends Component {
       [name]: value,
     });
   };
-  handleSubmit = (event) => {
+  handleSubmitUser = (event) => {
     event.preventDefault();
     axios
       .put(`/api/user/${this.props.match.params.id}`, {
-        discord: this.state.discord,
-        games: this.state.games,
+        discord: this.state.discordName,
+        // games: this.state.games,
       })
       .then((response) => {
         console.log(response);
@@ -116,12 +116,24 @@ class AboutMe extends Component {
         <h1 id="FFheadText"> Welcome to FriendlyFire! </h1>
         <br />
         <div className="row">
-          <form className="col s12 center">
+          <form className="col s12 center" onSubmit={this.handleSubmitUser}>
             <div className="row">
               <div className="input-field col s12">
                 <i className="material-icons prefix">gamepad</i>
-                <input id="icon_gamepad" type="text" />
+                <input id="icon_gamepad" 
+                type="text" 
+                name="discordName"
+                onChange={this.handleChange}/>
                 <label for="icon_gamepad">Discord Username</label>
+                <button
+                  className="btn waves-effect waves-light"
+                  id="ButtonColor"
+                  type="submit"
+                  name="action"
+                >
+                 Submit
+                  <i className="material-icons right">account_box</i>
+                </button>
               </div>
             </div>
           </form>

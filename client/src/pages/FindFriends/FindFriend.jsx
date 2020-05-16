@@ -10,6 +10,7 @@ class FindFriend extends Component {
     searchGame: "",
     searchName: "",
     usersGames: [],
+    searchBy: "",
   };
 
   componentDidMount() {
@@ -40,7 +41,9 @@ class FindFriend extends Component {
       .then((response) => {
         console.log(response.data);
         // debugger
-        this.setState({ friendResults: [response.data] });
+        this.setState({ friendResults: [response.data] }
+          );
+          this.setState({searchBy: "Name"});
       })
       .catch((err) => {
         if (err) {
@@ -57,6 +60,7 @@ class FindFriend extends Component {
       .then((response) => {
         console.log(response.data.results);
         this.setState({ friendResults: [response.data] });
+        this.setState({ searchBy: "Game"});
       })
       .catch((err) => {
         if (err) {
@@ -121,7 +125,7 @@ class FindFriend extends Component {
               </button>
             </div>
           </form>
-          <h4 className="center">Results:</h4>
+          <h4 className="center">Results by {this.state.searchBy}:</h4>
           <table className="centered highlight bordered">
             <thead>
               <tr>
