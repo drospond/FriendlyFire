@@ -33,9 +33,9 @@ router.get("/:id", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const updatedUser = {
-    email: req.body.email.trim(),
-    password: req.body.password.trim(),
-    handle: req.body.handle.trim(),
+    // email: req.body.email.trim(),
+    // password: req.body.password.trim(),
+    // handle: req.body.handle.trim(),
     discord: req.body.discord.trim(),
   };
 
@@ -47,5 +47,18 @@ router.put("/:id", (req, res) => {
     res.json(updatedUser);
   });
 });
+
+// router.delete("/:id", (req, res) => {
+//   db.User.destroy({
+//     where: {
+//       id = req.params.id
+//     }.then(() => {
+//       res.json({
+//         success: true
+//       })
+//     }
+//   )
+// }
+
 
 module.exports = router;
