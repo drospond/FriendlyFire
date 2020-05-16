@@ -124,7 +124,7 @@ class Dashboard extends Component {
               <th>Discord Name</th>
             </tr>
           </thead>
-          <FriendList friendResults={this.state.friendResults} />
+          <FriendList friendResults={this.state.friendResults} saveButton={false}/>
         </table>
       </div>
     );

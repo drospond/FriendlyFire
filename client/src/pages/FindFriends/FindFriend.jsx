@@ -33,6 +33,18 @@ class FindFriend extends Component {
     console.log(`Option selected:`, selectedOption);
   };
 
+  addFriend = (friendId) => {
+    console.log("ADD FRIEND!");
+    console.log(friendId);
+    axios
+      .post("/api/friend", {
+        user1Id: this.props.match.params.id,
+        user2Id: friendId,
+      })
+      .then(() => console.log("friend added"))
+      .catch((er) => console.log(er));
+  };
+
   handleSubmitName = (event) => {
     event.preventDefault();
     const searchName = this.state.searchName;
@@ -101,7 +113,7 @@ class FindFriend extends Component {
               <Select
                 className="gameSelect"
                 styles={{
-                  menu: (provided) => ({ ...provided, zIndex: 9999}),
+                  menu: (provided) => ({ ...provided, zIndex: 9999 }),
                 }}
                 onChange={this.handleSelectChange}
                 options={this.state.usersGames.map((game) => {
@@ -132,9 +144,14 @@ class FindFriend extends Component {
                 <th>User's ID</th>
                 <th>Username</th>
                 <th>Discord Name</th>
+                <th>Add Friend</th>
               </tr>
             </thead>
-            <FriendList friendResults={this.state.friendResults} />
+            <FriendList
+              friendResults={this.state.friendResults}
+              saveButton={true}
+              addFriend={this.addFriend}
+            />
           </table>
           <a
             className="waves-effect waves-light btn"
