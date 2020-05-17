@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import FriendList from "../../components/friendHandler/friendList";
 import axios from "axios";
+import GamesList from "../../components/GamesList";
 
 class Dashboard extends Component {
   state = {
     friendResults: [],
     searchFriendResults: [],
+    gameResults: [],
     searchGame: "",
     searchName: "",
     searchBy: "",
@@ -16,7 +18,21 @@ class Dashboard extends Component {
       .get(`/api/friend/${this.props.match.params.id}`)
       .then((response) => {
         console.log(response.data);
-        this.setState({ friendResults: response.data, searchFriendResults: response.data });
+        this.setState({
+          friendResults: response.data,
+          searchFriendResults: response.data,
+        });
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    axios
+      .get(`/api/usergame/${this.props.match.params.id}`)
+      .then((response) => {
+        console.log(response.data);
+        this.setState({ gameResults: response.data });
       })
       .catch((err) => {
         if (err) {
@@ -52,7 +68,7 @@ class Dashboard extends Component {
       .then((response) => {
         console.log(response.data.results);
         this.setState({ friendResults: [response.data] });
-        this.setState({searchBy: " by Game"})
+        this.setState({ searchBy: " by Game" });
       })
       .catch((err) => {
         if (err) {
@@ -61,13 +77,35 @@ class Dashboard extends Component {
       });
   };
 
+  deleteGame = (gameId) => {
+    axios
+      .delete(`/api/userGame/${gameId}/${this.props.match.params.id}`)
+      .then(() => {
+        console.log("game deleted");
+        axios
+          .get(`/api/usergame/${this.props.match.params.id}`)
+          .then((response) => {
+            console.log(response.data);
+            this.setState({ gameResults: response.data });
+          })
+          .catch((err) => {
+            if (err) {
+              console.log(err);
+            }
+          });
+      })
+      .catch((er) => console.log(er));
+  };
+
   render() {
     return (
       <div className="container center">
         <h4 id="FFheadText">Dashboard</h4>
         <br />
         <div className="row">
-          <h5 id="FFheadText">Search your friends list{this.state.searchBy}!</h5>
+          <h5 id="FFheadText">
+            Search your friends list{this.state.searchBy}!
+          </h5>
           <form className="col s3 offset-s1" onSubmit={this.handleSubmitName}>
             <div className="row">
               <div className="input-field">
@@ -113,6 +151,7 @@ class Dashboard extends Component {
             </div>
           </form>
         </div>
+        <h3>Friends List</h3>
         <table className="centered highlight bordered">
           <thead>
             <tr>
@@ -121,8 +160,14 @@ class Dashboard extends Component {
               <th>Discord Name</th>
             </tr>
           </thead>
-          <FriendList friendResults={this.state.searchFriendResults} saveButton={false}/>
+          <FriendList
+            friendResults={this.state.searchFriendResults}
+            saveButton={false}
+          />
         </table>
+
+        <h3>Your Games</h3>
+        <GamesList games={this.state.gameResults} deleteGame={this.deleteGame}/>
       </div>
     );
   }
