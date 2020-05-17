@@ -9,6 +9,11 @@ class AboutMe extends Component {
     gameResults: [],
     search: "",
   };
+
+  pageChanger = (event) => {
+    window.location.href="/dashboard/5"
+  }
+
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -180,6 +185,7 @@ class AboutMe extends Component {
             id="ButtonColor"
             type="submit"
             name="action"
+            onClick={this.pageChanger}
           >
             Done! Go Find Friends!
             <i className="material-icons right">send</i>
