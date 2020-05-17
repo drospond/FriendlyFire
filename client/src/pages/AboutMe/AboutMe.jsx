@@ -20,7 +20,14 @@ class AboutMe extends Component {
       [name]: value,
     });
   };
-  handleSubmitUser = (event) => {
+
+
+  pageChanger = (event) => {
+    window.location.href=`/dashboard/${this.props.match.params.id}`
+  }
+
+   handleSubmitUser = (event) => {
+
     event.preventDefault();
     axios
       .put(`/api/user/${this.props.match.params.id}`, {
@@ -195,5 +202,6 @@ class AboutMe extends Component {
     );
   }
 }
+
 
 export default AboutMe;

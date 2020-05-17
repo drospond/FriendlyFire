@@ -30,6 +30,13 @@ router.get("/:id", (req, res) => {
     },
   }).then((user) => res.json(user));
 });
+router.get("/handle/:handle", (req, res) => {
+  db.User.findOne({
+    where: {
+      handle: req.params.handle,
+    },
+  }).then((user) => res.json(user));
+});
 
 router.put("/:id", (req, res) => {
   const updatedUser = {

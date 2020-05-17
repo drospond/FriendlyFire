@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./CA.css";
 import axios from "axios";
 
-
 class CreateAccount extends Component {
   state = {
     email: "",
@@ -16,9 +15,17 @@ class CreateAccount extends Component {
     });
   };
   pageChanger = (event) => {
-    window.location.href="/account/7"
+    axios.get(`/api/user/handle/${this.state.handle}`)
+    .then((response) => {
+      window.location.href=`/account/${response.data.id}`
+     ;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
+ 
   handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -46,11 +53,11 @@ class CreateAccount extends Component {
   //       userId = userExists.data.id;
   //     }
   //   })
-    //axios.post("/api/usergame", {gameId, userId}).then(()=>console.log("game saved")).catch(er=>console.log(er));
-    //need a way to get the signed in user's id 
-    //need to assign game id if game is just being created in database
-    //probably need to async await in the end to avoid .then hell
-  
+  //axios.post("/api/usergame", {gameId, userId}).then(()=>console.log("game saved")).catch(er=>console.log(er));
+  //need a way to get the signed in user's id
+  //need to assign game id if game is just being created in database
+  //probably need to async await in the end to avoid .then hell
+
   render() {
     return (
       <div className="container center">
@@ -61,19 +68,34 @@ class CreateAccount extends Component {
             <div className="row">
               <div className="input-field col s12">
                 <i className="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" name="handle" onChange={this.handleChange}/>
+                <input
+                  id="icon_prefix"
+                  type="text"
+                  name="handle"
+                  onChange={this.handleChange}
+                />
                 <label for="icon_prefix">Username</label>
               </div>
               <div className="input-field col s12">
                 <i className="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" name="email" onChange={this.handleChange}/>
+                <input
+                  id="icon_prefix"
+                  type="text"
+                  name="email"
+                  onChange={this.handleChange}
+                />
                 <label for="icon_prefix">Email</label>
               </div>
             </div>
             <div className="row">
               <div className="input-field col s12">
                 <i className="material-icons prefix">sms</i>
-                <input id="icon_sms" type="password" name="password" onChange={this.handleChange} />
+                <input
+                  id="icon_sms"
+                  type="password"
+                  name="password"
+                  onChange={this.handleChange}
+                />
                 <label for="icon_">Password</label>
               </div>
             </div>
@@ -81,23 +103,30 @@ class CreateAccount extends Component {
           <div className="row">
             <a
               className="btn waves-effect waves-light"
-              href="/AboutMe"
               id="ButtonColor"
               name="action"
-              onClick={(this.handleSubmit)
-               }
-              
-              
+              onClick={this.handleSubmit}
             >
-              Next!
+              Done!
               <i className="material-icons right">send</i>
             </a>
           </div>
+          <div className="row">
+            <a
+              className="btn waves-effect waves-light"
+              id="ButtonColor"
+              name="action"
+              onClick={this.pageChanger}
+            >
+              Add Info
+              <i className="material-icons right">send</i>
+            </a>
+          </div>
+          
         </div>
       </div>
     );
   }
-
 }
 
 export default CreateAccount;
