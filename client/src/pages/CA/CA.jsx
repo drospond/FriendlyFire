@@ -25,10 +25,7 @@ class CreateAccount extends Component {
     });
   }
 
-  // TO-DO link page to dashboard via pageChange function
-  // function pageChange(){
-  //   window.location='about'
-  // }
+ 
   handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -40,6 +37,9 @@ class CreateAccount extends Component {
       .then((response) => {
         console.log(response);
       })
+      // .then((response) => {
+      //   this.pageChanger
+      // })
       .catch((err) => {
         console.log(err);
       });

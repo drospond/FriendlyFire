@@ -5,10 +5,15 @@ import GameCard from "../../components/GameCard/GameCard";
 
 class AboutMe extends Component {
   state = {
-    discord: "",
+    discordName: "",
     gameResults: [],
     search: "",
   };
+
+  pageChanger = (event) => {
+    window.location.href=`/dashboard/${this.props.match.params.id}`
+  }
+
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -16,11 +21,13 @@ class AboutMe extends Component {
     });
   };
 
+
   pageChanger = (event) => {
     window.location.href=`/dashboard/${this.props.match.params.id}`
   }
 
    handleSubmitUser = (event) => {
+
     event.preventDefault();
     axios
       .put(`/api/user/${this.props.match.params.id}`, {
