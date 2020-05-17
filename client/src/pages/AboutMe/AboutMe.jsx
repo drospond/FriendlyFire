@@ -11,7 +11,7 @@ class AboutMe extends Component {
   };
 
   pageChanger = (event) => {
-    window.location.href="/dashboard/5"
+    window.location.href=`/dashboard/${this.props.match.params.id}`
   }
 
   handleChange = (event) => {

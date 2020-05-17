@@ -11,6 +11,7 @@ class Dashboard extends Component {
     searchGame: "",
     searchName: "",
     searchBy: "",
+    id: ""
   };
 
   componentDidMount() {
