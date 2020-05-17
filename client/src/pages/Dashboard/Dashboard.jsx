@@ -8,6 +8,7 @@ class Dashboard extends Component {
     searchGame: "",
     searchName: "",
     searchBy: "",
+    id: ""
   };
 
   componentDidMount() {
@@ -16,6 +17,7 @@ class Dashboard extends Component {
       .then((response) => {
         console.log(response.data);
         this.setState({ friendResults: response.data });
+        this.setState({id: response.data.id})
       })
       .catch((err) => {
         if (err) {
