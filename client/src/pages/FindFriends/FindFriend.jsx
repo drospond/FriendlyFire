@@ -113,7 +113,7 @@ class FindFriend extends Component {
               <Select
                 className="gameSelect"
                 styles={{
-                  menu: (provided) => ({ ...provided, zIndex: 9999 }),
+                  menu: (provided) => ({ ...provided, zIndex: 9999, color: "black" }),
                 }}
                 onChange={this.handleSelectChange}
                 options={this.state.usersGames.map((game) => {
