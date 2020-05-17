@@ -5,6 +5,7 @@ import axios from "axios";
 class Dashboard extends Component {
   state = {
     friendResults: [],
+    searchFriendResults: [],
     searchGame: "",
     searchName: "",
     searchBy: "",
@@ -15,7 +16,7 @@ class Dashboard extends Component {
       .get(`/api/friend/${this.props.match.params.id}`)
       .then((response) => {
         console.log(response.data);
-        this.setState({ friendResults: response.data });
+        this.setState({ friendResults: response.data, searchFriendResults: response.data });
       })
       .catch((err) => {
         if (err) {
@@ -33,20 +34,16 @@ class Dashboard extends Component {
 
   handleSubmitName = (event) => {
     event.preventDefault();
-    const searchName = this.state.searchName;
-    axios
-      .get(`/api/friend/find?name=${searchName}`)
-      .then((response) => {
-        console.log(response.data);
-        this.setState({ friendResults: [response.data] });
-        this.setState({searchBy: " by Name"})
-      })
-      .catch((err) => {
-        if (err) {
-          console.log(err);
-        }
-      });
+    if (this.state.searchName === "") {
+      this.setState({ searchFriendResults: this.state.friendResults });
+    } else {
+      const filteredUsers = this.state.friendResults.filter((friend) =>
+        friend.handle.includes(this.state.searchName)
+      );
+      this.setState({ searchFriendResults: filteredUsers });
+    }
   };
+
   handleSubmitGame = (event) => {
     event.preventDefault();
     const searchGame = this.state.searchGame;
@@ -124,7 +121,7 @@ class Dashboard extends Component {
               <th>Discord Name</th>
             </tr>
           </thead>
-          <FriendList friendResults={this.state.friendResults} saveButton={false}/>
+          <FriendList friendResults={this.state.searchFriendResults} saveButton={false}/>
         </table>
       </div>
     );
