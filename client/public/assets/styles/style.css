@@ -1,13 +1,13 @@
 #root {
-    background-color: #0d0c1c;
+    background-color: #0d0c1c!important;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    color: #d8dae7;
+    color: #d8dae7!important;
 }
 
 #NavFooter{
-    background-color: #34608d;
+    background-color: #34608d!important;
 }
 
 #FFheadText{
@@ -15,14 +15,14 @@
 }
 
 #removeFriends{
-    background-color: #DF740C;
+    background-color: #DF740C!important;
 }
 
 input, select, textarea{
-    color: #d8dae7;
+    color: #d8dae7!important;
 }
 form {
-color:#d8dae7 ;
+color:#d8dae7!important;
 
 }
 
@@ -30,7 +30,7 @@ main {
     flex: 1 0 auto;
   }
 #ButtonColor{
-    background-color: #34608d
+    background-color: #34608d!important
 }
 /* a:active{
 background-color: #18cae6;
