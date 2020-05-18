@@ -55,17 +55,18 @@ router.put("/:id", (req, res) => {
   });
 });
 
-// router.delete("/:id", (req, res) => {
-//   db.User.destroy({
-//     where: {
-//       id = req.params.id
-//     }.then(() => {
-//       res.json({
-//         success: true
-//       })
-//     }
-//   )
-// }
+router.delete("/:id", (req, res) => {
+  db.User.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(() => {
+      res.json({
+        success: true
+      })
+    }
+  )
+})
 
 
 module.exports = router;
