@@ -1,0 +1,14 @@
+.DANGER{
+    background-color: crimson;
+}
+
+.delete-text:after{
+    content:'DELETE-ACCOUNT';
+}
+.DANGER:hover .delete-text:after{
+    content:'WARNING! PERMANENT!';
+}
+
+.DANGER:hover{
+    background-color: rgb(252, 24, 69)
+}

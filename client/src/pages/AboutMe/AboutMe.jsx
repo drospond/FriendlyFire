@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import GameCard from "../../components/GameCard/GameCard";
+import "./AboutMe.css"
 
 class AboutMe extends Component {
   state = {
@@ -122,6 +123,14 @@ class AboutMe extends Component {
     await axios.post("/api/usergame", {gameId: gameId, userId: this.props.match.params.id}).then(()=>console.log("game saved")).catch(er=>console.log(er));
   };
 
+  deleteAccount = () => {
+    console.log("deleting...");
+    axios.delete(`/api/user/${this.props.match.params.id}`).then(()=>{
+      window.location.href="/";
+      this.props.logOutUser();
+    })
+  }
+
   render() {
     return (
       <div className="container center">
@@ -197,6 +206,9 @@ class AboutMe extends Component {
             Done! Go Find Friends!
             <i className="material-icons right">send</i>
           </button>
+        </div>
+        <div className="row">
+        <button class="waves-effect waves-light btn DANGER" onClick={this.deleteAccount}><i class="material-icons right">delete_forever</i><span className="delete-text"></span></button>
         </div>
       </div>
     );
