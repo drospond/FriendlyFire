@@ -35,8 +35,8 @@ app.get("*", (req, res) => {
 });
 
 
-db.sequelize.sync({force: true}).then(function () {
-// db.sequelize.sync().then(function () {
+//db.sequelize.sync({force: true}).then(function () {
+ db.sequelize.sync().then(function () {
   app.listen(PORT, () => {
     console.log(`App is running on http://localhost:${PORT}`);
   });
