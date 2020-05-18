@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./CA.css";
 import axios from "axios";
+import jwt from "jsonwebtoken";
 
 class CreateAccount extends Component {
   state = {
@@ -8,22 +9,41 @@ class CreateAccount extends Component {
     handle: "",
     password: "",
   };
+
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
   };
+
   pageChanger = (event) => {
     axios.get(`/api/user/handle/${this.state.handle}`)
     .then((response) => {
-      window.location.href=`/account/${response.data.id}`
-     ;
+      axios
+      .post("/api/auth", {
+        email: this.state.email,
+        password: this.state.password,
+      })
+      .then(async (response) => {
+        console.log(response.data.data);
+        if (response.data.success) {
+          const decoded = await jwt.verify(
+            response.data.data,
+            process.env.REACT_APP_SECRET_KEY
+          );
+          console.log(decoded);
+          await sessionStorage.setItem("jwt", response.data.data);
+          await this.props.checkForToken();
+          await this.props.history.push(`/account/${decoded.id}`);
+        }
+      });
     })
     .catch((err) => {
       console.log(err);
     });
   } 
+
   handleSubmit = (event) => {
     event.preventDefault();
     axios

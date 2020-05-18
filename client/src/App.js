@@ -70,9 +70,8 @@ function App() {
               path={["/account/:id"]}
               render={(props) => <AboutMe {...props} logOutUser={logOutUser}/>}
             />
-            <Route exact path={["/createAccount"]}>
-              <CA />
-            </Route>
+            <Route path={["/createAccount"]}
+            render={(props) => <CA {...props} checkForToken={checkForToken}/>}/>
             <Route
               path={["/dashboard/:id"]}
               render={(props) => <Dashboard {...props} />}
