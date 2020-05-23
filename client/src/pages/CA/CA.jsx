@@ -8,6 +8,8 @@ class CreateAccount extends Component {
     email: "",
     handle: "",
     password: "",
+    errorMessage: "",
+    error: ""
   };
 
   handleChange = (event) => {
@@ -15,6 +17,10 @@ class CreateAccount extends Component {
     this.setState({
       [name]: value,
     });
+    this.setState({
+      error: "",
+      errorMessage: ""
+    })
   };
 
   pageChanger = (event) => {
@@ -56,16 +62,22 @@ class CreateAccount extends Component {
         console.log(response);
         this.pageChanger();
       })
-      .catch((err) => {
+      .catch((err,response) => {
         console.log(err);
+        this.setState({
+          error: true,
+          errorMessage: err.response.data.message
+        })
       });
   };
+
   render() {
     return (
       <div className="container center">
         <h1 id="FFheadText"> Welcome to FriendlyFire! </h1>
         <br />
         <div className="row">
+        {this.state.error===true && <h5 className="error">{this.state.errorMessage}</h5>}
           <form className="col s12 center">
             <div className="row">
               <div className="input-field col s12">
@@ -114,18 +126,6 @@ class CreateAccount extends Component {
               <i class="material-icons right">save</i>
             </button>
           </div>
-          {/* <div className="row">
-            <a
-              className="btn waves-effect waves-light"
-              id="ButtonColor"
-              name="action"
-              onClick={this.pageChanger}
-            >
-              Add Info
-              <i className="material-icons right">send</i>
-            </a>
-          </div> */}
-          
         </div>
       </div>
     );
