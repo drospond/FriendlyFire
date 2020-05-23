@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Home.css";
-import { Link } from "react-router-dom";
 import jwt from "jsonwebtoken";
 import axios from "axios"
 
@@ -57,14 +56,14 @@ class Home extends Component {
               <div className="input-field col s12">
                 <i className="material-icons prefix">account_circle</i>
                 <input id="icon_prefix" type="text" name="email" onChange={this.handleInputChange}/>
-                <label for="icon_prefix">Email</label>
+                <label htmlFor="icon_prefix">Email</label>
               </div>
             </div>
             <div className="row">
               <div className="input-field col s12">
                 <i className="material-icons prefix">sms</i>
                 <input id="icon_sms" type="password" name="password" onChange={this.handleInputChange}/>
-                <label for="icon_">Password</label>
+                <label htmlFor="icon_">Password</label>
               </div>
             </div>
           <div className="row">
