@@ -54,6 +54,7 @@ class CreateAccount extends Component {
       })
       .then((response) => {
         console.log(response);
+        this.pageChanger();
       })
       .catch((err) => {
         console.log(err);
@@ -109,11 +110,11 @@ class CreateAccount extends Component {
               name="action"
               onClick={this.handleSubmit}
             >
-              Save
+              Create Account
               <i class="material-icons right">save</i>
             </button>
           </div>
-          <div className="row">
+          {/* <div className="row">
             <a
               className="btn waves-effect waves-light"
               id="ButtonColor"
@@ -123,7 +124,7 @@ class CreateAccount extends Component {
               Add Info
               <i className="material-icons right">send</i>
             </a>
-          </div>
+          </div> */}
           
         </div>
       </div>
