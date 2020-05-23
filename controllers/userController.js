@@ -14,6 +14,14 @@ router.post("/", (req, res) => {
       });
     })
     .catch((err) => {
+      console.log(err);
+      if(err.errors[0].validatorName==="is"){
+        res.status(400);
+        return res.json({
+          success: false,
+          message: "Password must be atleast 8 characters, contain atleast one letter and number, and can't contain an \" ' \".",
+        });
+      }
       if(err.errors[0].validatorName==="isEmail"){
         res.status(400);
         return res.json({

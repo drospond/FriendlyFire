@@ -6,7 +6,11 @@ module.exports = function (sequelize, DataTypes) {
       unique: true,
       validate: { isEmail: true },
     },
-    password: { type: DataTypes.STRING, allowNull: false },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { is: /^(?=.*[0-9])(?=.*[a-zA-Z])^(?!.*').{8,}$/g },
+    },
     handle: { type: DataTypes.STRING, allowNull: false, unique: true },
     discord: DataTypes.STRING,
   });
