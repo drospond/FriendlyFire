@@ -6,7 +6,7 @@ router.post("/", (req, res) => {
   const email = req.body.email.trim();
   const password = req.body.password.trim();
   const handle = req.body.handle.trim();
-
+//will need to abstract if error handling eventually, getting pretty bulky
   db.User.create({ email, password, handle })
     .then(() => {
       res.json({
@@ -14,10 +14,16 @@ router.post("/", (req, res) => {
       });
     })
     .catch((err) => {
+      if(err.errors[0].validatorName==="isEmail"){
+        res.status(400);
+        return res.json({
+          success: false,
+          message: "Enter a valid email address.",
+        });
+      };
       let errorType = [];
       errorType.push(err.original.sqlMessage.split("'")[0]);
       errorType.push(err.original.sqlMessage.split("'")[3]);
-      console.log(errorType);
       if (
         errorType[0] === "Duplicate entry " &&
         errorType[1] === "users.handle"
