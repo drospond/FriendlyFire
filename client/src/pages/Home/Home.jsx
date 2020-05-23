@@ -51,6 +51,7 @@ class Home extends Component {
         <h1 id="FFheadText"> Welcome to FriendlyFire! </h1>
         <br />
         <div className="row">
+          {this.state.error===true && <h5 className="error">Invalid username or password</h5>}
           <form className="col s12 center" onSubmit={(event)=>this.handleSubmit(event, this.state.email, this.state.password)}>
             <div className="row">
               <div className="input-field col s12">
