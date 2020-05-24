@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import jwt from "jsonwebtoken";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./components/Persistent/Navbar";
@@ -98,3 +98,9 @@ function App() {
 }
 
 export default App;
+
+//TODO render logged in username somewhere on dashboard
+//TODO fix bug: "going back to create account page after creating account crashes the server"
+//TODO add delete friend button
+//TODO hash passwords before storing them and check passwords against their hash
+//TODO fix functionality for finding friend based on game
