@@ -5,20 +5,20 @@ import GamesList from "../../components/GamesList";
 
 class Dashboard extends Component {
   state = {
+    userName: "",
     friendResults: [],
     searchFriendResults: [],
     gameResults: [],
     searchGame: "",
     searchName: "",
     searchBy: "",
-    id: ""
+    id: "",
   };
 
   componentDidMount() {
     axios
       .get(`/api/friend/${this.props.match.params.id}`)
       .then((response) => {
-        console.log(response.data);
         this.setState({
           friendResults: response.data,
           searchFriendResults: response.data,
@@ -32,8 +32,17 @@ class Dashboard extends Component {
     axios
       .get(`/api/usergame/${this.props.match.params.id}`)
       .then((response) => {
-        console.log(response.data);
         this.setState({ gameResults: response.data });
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    axios
+      .get(`/api/user/${this.props.match.params.id}`)
+      .then((userResponse) => {
+        this.setState({ userName: userResponse.data.handle });
       })
       .catch((err) => {
         if (err) {
@@ -101,7 +110,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="container center">
-        <h4 id="FFheadText">Dashboard</h4>
+        <h4 id="FFheadText">{this.state.userName}'s Dashboard</h4>
         <br />
         <div className="row">
           <h5 id="FFheadText">
@@ -168,7 +177,10 @@ class Dashboard extends Component {
         </table>
 
         <h3>Your Games</h3>
-        <GamesList games={this.state.gameResults} deleteGame={this.deleteGame}/>
+        <GamesList
+          games={this.state.gameResults}
+          deleteGame={this.deleteGame}
+        />
       </div>
     );
   }
