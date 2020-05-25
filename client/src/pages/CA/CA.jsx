@@ -8,8 +8,7 @@ class CreateAccount extends Component {
     email: "",
     handle: "",
     password: "",
-    errorMessage: "",
-    error: ""
+
   };
 
   handleChange = (event) => {
@@ -24,6 +23,7 @@ class CreateAccount extends Component {
   };
 
   pageChanger = (event) => {
+
     axios.get(`/api/user/handle/${this.state.handle}`)
     .then((response) => {
       axios
@@ -50,6 +50,7 @@ class CreateAccount extends Component {
     });
   } 
 
+
   handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -57,6 +58,7 @@ class CreateAccount extends Component {
         email: this.state.email,
         handle: this.state.handle,
         password: this.state.password,
+        age: this.state.age,
       })
       .then((response) => {
         console.log(response);
@@ -113,9 +115,15 @@ class CreateAccount extends Component {
                 <label for="icon_">Password</label>
               </div>
             </div>
+            <p>
+              <label>
+                <input type="checkbox" class="filled-in" />
+                <span>I verify that I am 13 or older.</span>
+              </label>
+            </p>
           </form>
           <div className="row">
-          <button
+            <button
               class="btn waves-effect waves-light"
               type="submit"
               id="ButtonColor"
@@ -126,6 +134,19 @@ class CreateAccount extends Component {
               <i class="material-icons right">save</i>
             </button>
           </div>
+
+          <div className="row">
+            <a
+              className="btn waves-effect waves-light"
+              id="ButtonColor"
+              name="action"
+              onClick={this.pageChanger}
+            >
+              Add Info
+              <i className="material-icons right">send</i>
+            </a>
+          </div>
+
         </div>
       </div>
     );
