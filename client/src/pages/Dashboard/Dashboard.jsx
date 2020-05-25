@@ -98,6 +98,26 @@ class Dashboard extends Component {
       .catch((er) => console.log(er));
   };
 
+
+  // TODO fix api call to actually delete.
+  deleteFriend = (user2Id) => {
+    axios
+    .delete(`/api/friend/${user2Id}/${this.props.match.params.id}`)
+    .then(() => {
+      console.log("Friend deleted :(")
+      axios.get(`/api/friend/${this.props.match.params.id}`)
+      .then((response) => {
+        console.log(response.data);
+        this.setState({ friendResults: response.data })
+      })
+        .catch((err) => {
+          if (err) {
+            console.log(err);
+          }
+        })
+        })
+      }
+
   render() {
     return (
       <div className="container center">
@@ -164,6 +184,8 @@ class Dashboard extends Component {
           <FriendList
             friendResults={this.state.searchFriendResults}
             saveButton={false}
+            deleteButton={true}
+            deleteFriend={this.deleteFriend}
           />
         </table>
 
