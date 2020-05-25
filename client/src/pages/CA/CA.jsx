@@ -7,6 +7,7 @@ class CreateAccount extends Component {
     email: "",
     handle: "",
     password: "",
+    age: "",
   };
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -15,15 +16,15 @@ class CreateAccount extends Component {
     });
   };
   pageChanger = (event) => {
-    axios.get(`/api/user/handle/${this.state.handle}`)
-    .then((response) => {
-      window.location.href=`/account/${response.data.id}`
-     ;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  } 
+    axios
+      .get(`/api/user/handle/${this.state.handle}`)
+      .then((response) => {
+        window.location.href = `/account/${response.data.id}`;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -31,6 +32,7 @@ class CreateAccount extends Component {
         email: this.state.email,
         handle: this.state.handle,
         password: this.state.password,
+        age: this.state.age,
       })
       .then((response) => {
         console.log(response);
@@ -80,9 +82,15 @@ class CreateAccount extends Component {
                 <label for="icon_">Password</label>
               </div>
             </div>
+            <p>
+              <label>
+                <input type="checkbox" class="filled-in" />
+                <span>I verify that I am 13 or older.</span>
+              </label>
+            </p>
           </form>
           <div className="row">
-          <button
+            <button
               class="btn waves-effect waves-light"
               type="submit"
               id="ButtonColor"
@@ -104,7 +112,6 @@ class CreateAccount extends Component {
               <i className="material-icons right">send</i>
             </a>
           </div>
-          
         </div>
       </div>
     );
