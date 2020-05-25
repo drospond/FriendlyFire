@@ -29,17 +29,22 @@ router.post("/", (req, res) => {
 
 router.delete("/:user1Id/:user2Id", (req, res) => {
   db.Friend.destroy({
-      where: {
+    where: {
+      [Op.or]: [{
         user1Id: req.params.user1Id,
-        user2Id: req.params.user2Id
+        user2Id: req.params.user2Id,
+      },
+      {
+        user2Id: req.params.user1Id,
+        user1Id: req.params.user2Id,
       }
-    })
+    ]
+    },
+  })
     .then(() => {
-      res.json(
-        {
-          success: true,
-        },
-      );
+      res.json({
+        success: true,
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -58,7 +63,7 @@ router.get("/find", (req, res) => {
   }
   db.User.findOne({
     where: newObjectToQuery,
-    attributes: ["id", "handle", "discord"]
+    attributes: ["id", "handle", "discord"],
   })
     .then((result) => {
       res.json(result);
@@ -70,7 +75,7 @@ router.get("/find", (req, res) => {
 
 router.get("/findAll", (req, res) => {
   db.User.findAll({
-    attributes: ["id", "handle", "discord"]
+    attributes: ["id", "handle", "discord"],
   })
     .then((result) => {
       res.json(result);
@@ -86,29 +91,31 @@ router.get("/:id", (req, res) => {
     where: {
       [Op.or]: {
         user1Id: userId,
-        user2Id: userId
-      }
+        user2Id: userId,
+      },
     },
-    include:[{
-      model: db.User,
-      as: "User1",
-      attributes: ["id", "handle", "discord"]
-    },
-    {
-      model: db.User,
-      as: "User2",
-      attributes: ["id", "handle", "discord"]
-    }]
+    include: [
+      {
+        model: db.User,
+        as: "User1",
+        attributes: ["id", "handle", "discord"],
+      },
+      {
+        model: db.User,
+        as: "User2",
+        attributes: ["id", "handle", "discord"],
+      },
+    ],
   })
     .then((result) => {
-      const friendsArray = result.map((friendship)=>{
-        if(Number(friendship.User1.id) !== Number(userId)){
+      const friendsArray = result.map((friendship) => {
+        if (Number(friendship.User1.id) !== Number(userId)) {
           return friendship.User1;
         }
-        if(friendship.User2.id !== userId){
+        if (friendship.User2.id !== userId) {
           return friendship.User2;
         }
-      })
+      });
       res.json(friendsArray);
     })
     .catch((err) => {
