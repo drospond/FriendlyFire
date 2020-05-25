@@ -1,7 +1,16 @@
 module.exports = function (sequelize, DataTypes) {
   const User = sequelize.define("User", {
-    email: { type: DataTypes.STRING, allowNull: false, unique: true },
-    password: { type: DataTypes.STRING, allowNull: false },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: { isEmail: true },
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { is: /^(?=.*[0-9])(?=.*[a-zA-Z])^(?!.*').{8,}$/g },
+    },
     handle: { type: DataTypes.STRING, allowNull: false, unique: true },
     discord: DataTypes.STRING,
   });
