@@ -13,6 +13,7 @@ const FriendList = (props) => {
           discordName={friendResults.discord}
           saveButton={props.saveButton}
           addFriend={props.addFriend}
+          deleteFriend={props.deleteFriend}
         />
       ))}
     </tbody>

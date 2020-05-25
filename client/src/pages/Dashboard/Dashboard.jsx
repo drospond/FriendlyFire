@@ -107,6 +107,28 @@ class Dashboard extends Component {
       .catch((er) => console.log(er));
   };
 
+  deleteFriend = (friendId) => {
+    axios
+      .delete(`/api/friend/${friendId}/${this.props.match.params.id}`)
+      .then(() => {
+        console.log("friend deleted");
+        axios
+          .get(`/api/friend/${this.props.match.params.id}`)
+          .then((response) => {
+            this.setState({
+              friendResults: response.data,
+              searchFriendResults: response.data,
+            });
+          })
+          .catch((err) => {
+            if (err) {
+              console.log(err);
+            }
+          });
+      })
+      .catch((er) => console.log(er));
+  };
+
   render() {
     return (
       <div className="container center">
@@ -168,11 +190,13 @@ class Dashboard extends Component {
               <th>User ID</th>
               <th>Username</th>
               <th>Discord Name</th>
+              <th>Remove</th>
             </tr>
           </thead>
           <FriendList
             friendResults={this.state.searchFriendResults}
             saveButton={false}
+            deleteFriend={this.deleteFriend}
           />
         </table>
 

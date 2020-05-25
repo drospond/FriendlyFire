@@ -18,6 +18,18 @@ const Friend = (props) => {
           </button>
         </td>
       ):<></>}
+      {!props.saveButton?(
+        <td>
+          <button
+            className="waves-effect waves-light btn save"
+            id="ButtonColor"
+            type="submit"
+            onClick={() => props.deleteFriend(props.id)}
+          >
+            <i className="material-icons">delete</i>
+          </button>
+        </td>
+      ):<></>}
     </tr>
   );
 };
