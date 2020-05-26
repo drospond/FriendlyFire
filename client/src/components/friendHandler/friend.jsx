@@ -6,15 +6,6 @@ const Friend = (props) => {
       <td>{props.id}</td>
       <td>{props.handle}</td>
       <td>{props.discord}</td>
-      {props.deleteButton?(
-      <button 
-      className="waves-effect waves-light btn save"
-      id="removeFriends"
-      type="submit"
-      onClick={() => props.deleteFriend(props.id)}
-      >
-            <i className="material-icons">delete</i>
-          </button>):<></>}
       {props.saveButton?(
         <td>
           <button
@@ -31,7 +22,7 @@ const Friend = (props) => {
         <td>
           <button
             className="waves-effect waves-light btn save"
-            id="ButtonColor"
+            id="removeFriends"
             type="submit"
             onClick={() => props.deleteFriend(props.id)}
           >
