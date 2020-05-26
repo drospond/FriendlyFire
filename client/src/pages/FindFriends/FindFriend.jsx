@@ -118,7 +118,7 @@ class FindFriend extends Component {
                 onChange={this.handleSelectChange}
                 options={this.state.usersGames.map((game) => {
                   const option = {
-                    value: game.name,
+                    value: game.id,
                     label: `${game.name} | ${game.platform}`,
                   };
                   return option;

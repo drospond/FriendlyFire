@@ -30,15 +30,16 @@ router.post("/", (req, res) => {
 router.delete("/:user1Id/:user2Id", (req, res) => {
   db.Friend.destroy({
     where: {
-      [Op.or]: [{
-        user1Id: req.params.user1Id,
-        user2Id: req.params.user2Id,
-      },
-      {
-        user2Id: req.params.user1Id,
-        user1Id: req.params.user2Id,
-      }
-    ]
+      [Op.or]: [
+        {
+          user1Id: req.params.user1Id,
+          user2Id: req.params.user2Id,
+        },
+        {
+          user2Id: req.params.user1Id,
+          user1Id: req.params.user2Id,
+        },
+      ],
     },
   })
     .then(() => {
@@ -60,17 +61,36 @@ router.get("/find", (req, res) => {
   let newObjectToQuery = {};
   if (req.query.name) {
     newObjectToQuery.handle = req.query.name;
-  }
-  db.User.findOne({
-    where: newObjectToQuery,
-    attributes: ["id", "handle", "discord"],
-  })
-    .then((result) => {
-      res.json(result);
+    db.User.findOne({
+      where: newObjectToQuery,
+      attributes: ["id", "handle", "discord"],
     })
-    .catch((err) => {
-      res.json(err);
-    });
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  }
+  if (req.query.game) {
+    db.User.findAll({
+      where: {
+          '$Game.name$': req.query.game
+          // '$B.userId$'
+      },
+      include:[{
+        model: db.Game,
+        attributes: ["id", "name", "platform"]
+      }]
+    })
+      .then((result) => {
+        res.json(result.Games);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json(err);
+      });
+  }
 });
 
 router.get("/findAll", (req, res) => {
@@ -84,6 +104,24 @@ router.get("/findAll", (req, res) => {
       res.json(err);
     });
 });
+
+router.get("/test", (req, res)=>{
+  const name = "Apex Legends";
+  const platform = "PS4";
+  db.Game.findOne({
+    where: {
+        name: name,
+        platform: platform
+    },
+  })
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json(err);
+    });
+})
 
 router.get("/:id", (req, res) => {
   const userId = req.params.id;
