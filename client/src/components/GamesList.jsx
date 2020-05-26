@@ -12,7 +12,7 @@ const GamesList = (props) => {
               <td>
                 <button
                   className="waves-effect waves-light btn save"
-                  id="ButtonColor"
+                  id="removeFriends"
                   type="submit"
                   onClick={() => props.deleteGame(game.id)}
                 >
