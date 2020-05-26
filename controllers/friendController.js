@@ -105,24 +105,6 @@ router.get("/findAll", (req, res) => {
     });
 });
 
-router.get("/test", (req, res)=>{
-  const name = "Apex Legends";
-  const platform = "PS4";
-  db.Game.findOne({
-    where: {
-        name: name,
-        platform: platform
-    },
-  })
-    .then((result) => {
-      res.json(result);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.json(err);
-    });
-})
-
 router.get("/:id", (req, res) => {
   const userId = req.params.id;
   db.Friend.findAll({
