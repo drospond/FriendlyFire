@@ -30,7 +30,6 @@ class FindFriend extends Component {
 
   handleSelectChange = (selectedOption) => {
     this.setState({ searchGame: selectedOption.value });
-    console.log(`Option selected:`, selectedOption);
   };
 
   addFriend = (friendId) => {
@@ -68,10 +67,13 @@ class FindFriend extends Component {
     event.preventDefault();
     const searchGame = this.state.searchGame;
     axios
-      .get(`/api/friend/find?game=${searchGame}`)
+      .get(`/api/usergame/users/${searchGame}`)
       .then((response) => {
-        console.log(response.data.results);
-        this.setState({ friendResults: [response.data] });
+        console.log(response.data);
+        const userArray = response.data.map(user=>{
+          return user.User;
+        })
+        this.setState({ friendResults: userArray});
         this.setState({ searchBy: "Game"});
       })
       .catch((err) => {
@@ -118,7 +120,7 @@ class FindFriend extends Component {
                 onChange={this.handleSelectChange}
                 options={this.state.usersGames.map((game) => {
                   const option = {
-                    value: game.name,
+                    value: game.id,
                     label: `${game.name} | ${game.platform}`,
                   };
                   return option;
