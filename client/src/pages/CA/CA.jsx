@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import "./CA.css";
 import axios from "axios";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs"
 
 class CreateAccount extends Component {
   state = {
     email: "",
     handle: "",
     password: "",
-
   };
 
   handleChange = (event) => {
@@ -50,7 +50,18 @@ class CreateAccount extends Component {
     });
   } 
 
-
+passwordHasher = (event) => {
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(this.state.password, salt, (err, hash) => {
+      console.log("test of hashing");
+      console.log(hash);
+      this.setState({
+        password: hash
+      })
+    }
+    )}
+  )}
+ 
   handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -128,7 +139,7 @@ class CreateAccount extends Component {
               type="submit"
               id="ButtonColor"
               name="action"
-              onClick={this.handleSubmit}
+              onClick={this.passwordHasher}
             >
               Create Account
               <i class="material-icons right">save</i>
@@ -140,7 +151,7 @@ class CreateAccount extends Component {
               className="btn waves-effect waves-light"
               id="ButtonColor"
               name="action"
-              onClick={this.pageChanger}
+              onClick={this.handleSubmit}
             >
               Add Info
               <i className="material-icons right">send</i>
