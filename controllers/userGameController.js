@@ -58,7 +58,7 @@ router.get("/users/:id", (req, res) => {
     include: [
       {
         model: db.User,
-        attributes: ["id", "email", "handle"],
+        attributes: ["id", "email", "handle", "discord"],
       },
     ],
   })
@@ -83,7 +83,7 @@ router.post("/filterByGame/:id", (req, res) => {
     include: [
       {
         model: db.User,
-        attributes: ["id", "email", "handle"],
+        attributes: ["id", "email", "handle", "discord"],
       },
     ],
   })
