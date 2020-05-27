@@ -15,14 +15,14 @@ const Friend = (props) => {
             onClick={() => props.addFriend(props.id)}
           >
             <i className="material-icons">person_add</i>
-          </button>
+          </button>  
         </td>
       ):<></>}
       {!props.saveButton?(
         <td>
           <button
             className="waves-effect waves-light btn save"
-            id="ButtonColor"
+            id="removeFriends"
             type="submit"
             onClick={() => props.deleteFriend(props.id)}
           >

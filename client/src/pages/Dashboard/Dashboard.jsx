@@ -115,6 +115,7 @@ class Dashboard extends Component {
       .catch((er) => console.log(er));
   };
 
+
   deleteFriend = (friendId) => {
     axios
       .delete(`/api/friend/${friendId}/${this.props.match.params.id}`)
@@ -216,6 +217,7 @@ class Dashboard extends Component {
           <FriendList
             friendResults={this.state.searchFriendResults}
             saveButton={false}
+            deleteButton={true}
             deleteFriend={this.deleteFriend}
           />
         </table>
