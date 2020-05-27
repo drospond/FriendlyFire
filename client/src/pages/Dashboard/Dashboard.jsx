@@ -179,7 +179,15 @@ class Dashboard extends Component {
               <Select
                 className="gameSelect"
                 styles={{
-                  menu: (provided) => ({ ...provided, zIndex: 9999, color: "black" }),
+                  menu: (provided) => ({ ...provided, zIndex: 9999, color: "black", background: "#34608d" }),
+                  menuList: (provided) => ({...provided, background: "#34608d"}),
+                  control: (provided) => ({...provided, background: "#34608d", minHeight: 32}),
+                  container: (provided) => ({...provided, background: "#34608d"}),
+                  placeholder: (provided) => ({...provided, color: "#d8dae7"}),
+                  input: (provided) => ({...provided, color: "#d8dae7"}),
+                  dropdownIndicator: (provided) => ({...provided, color: "#d8dae7"}),
+                  selectedOption: (provided) => ({...provided, color: "#d8dae7"}),
+                  singleValue: (provided) => ({...provided, color: "#d8dae7"}),
                 }}
                 onChange={this.handleSelectChange}
                 options={this.state.gameResults.map((game) => {
