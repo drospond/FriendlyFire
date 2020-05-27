@@ -49,18 +49,18 @@ class CreateAccount extends Component {
       console.log(err);
     });
   } 
-
-passwordHasher = (event) => {
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(this.state.password, salt, (err, hash) => {
-      console.log("test of hashing");
-      console.log(hash);
-      this.setState({
-        password: hash
-      })
-    }
-    )}
-  )}
+// To-Do: ...figure out how to use some form of encryption to store user passwords. 
+// passwordHasher = (event) => {
+//   bcrypt.genSalt(10, (err, salt) => {
+//     bcrypt.hash(this.state.password, salt, (err, hash) => {
+//       console.log("test of hashing");
+//       console.log(hash);
+//       this.setState({
+//         password: hash
+//       })
+//     }
+//     )}
+//   )}
  
   handleSubmit = (event) => {
     event.preventDefault();
@@ -121,9 +121,9 @@ passwordHasher = (event) => {
                   id="icon_sms"
                   type="password"
                   name="password"
-                  onChange={this.handleChange}
-                />
+                  onChange={this.handleChange}/>
                 <label for="icon_">Password</label>
+                <span className="helper-text" id="orangeText" data-error="wrong" data-success="right">Password must be longer than 7 characters and must include a special character, a number, and a capital letter.</span>
               </div>
             </div>
             <p>
@@ -135,27 +135,15 @@ passwordHasher = (event) => {
           </form>
           <div className="row">
             <button
-              class="btn waves-effect waves-light"
-              type="submit"
-              id="ButtonColor"
-              name="action"
-              onClick={this.passwordHasher}
-            >
-              Create Account
-              <i class="material-icons right">save</i>
-            </button>
-          </div>
-
-          <div className="row">
-            <a
               className="btn waves-effect waves-light"
+              type="submit"
               id="ButtonColor"
               name="action"
               onClick={this.handleSubmit}
             >
-              Add Info
-              <i className="material-icons right">send</i>
-            </a>
+              Create Account
+              <i className="material-icons right">save</i>
+            </button>
           </div>
 
         </div>

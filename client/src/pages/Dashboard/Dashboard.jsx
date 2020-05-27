@@ -204,6 +204,7 @@ class Dashboard extends Component {
             </div>
           </form>
         </div>
+        <div className="row">
         <h3>Friends List</h3>
         <table className="centered highlight bordered">
           <thead>
@@ -221,12 +222,24 @@ class Dashboard extends Component {
             deleteFriend={this.deleteFriend}
           />
         </table>
-
+        </div>
+        <div className="row">
         <h3>Your Games</h3>
+        <table className="centered highlight bordered">
+      <thead>
+        <tr>
+          <th>Game ID</th>
+          <th>Game</th>
+          <th>Platform</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
         <GamesList
           games={this.state.gameResults}
           deleteGame={this.deleteGame}
         />
+      </table>
+        </div>
       </div>
     );
   }
