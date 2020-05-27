@@ -101,8 +101,6 @@ export default App;
 
 //TODO fix bug: "going back to create account page after creating account crashes the server"
 //TODO hash passwords before storing them and check passwords against their hash
-//TODO fix functionality for filtering friends based on game
 //TODO Don't show current user when searching for friends by game
 //TODO protect routes
 //TODO tweak look and layout
-//TODO fix bug: find friend by name breaks if doesn't exist
