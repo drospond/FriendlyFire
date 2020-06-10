@@ -37,4 +37,4 @@ A new gen way of finding new gaming friends. Create an account and add the games
 <a href="https://github.com/LKNorman"><img src="https://avatars3.githubusercontent.com/u/57967127?s=460&u=898a06b207c85ada74e2fe59858993e15b7185cf&v=4" alt="jessie-computes" width="75px" height="75px" /></a> 
 
 ## Links
-Deployed to heroku: https://secure-tor-59417.herokuapp.com/
+Deployed to heroku: https://frozen-savannah-80275.herokuapp.com/
